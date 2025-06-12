@@ -1,9 +1,14 @@
 package org.Yaed.windows;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class Inicio extends JFrame {
 
@@ -14,6 +19,17 @@ public class Inicio extends JFrame {
         setSize(900, 600);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
+
+        //hibernate
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("✅ ¡Hibernate se conectó con éxito!");
+
+        session.close();
+        sessionFactory.close();
+
 
         System.out.println("hola mundo");
         // Colores
