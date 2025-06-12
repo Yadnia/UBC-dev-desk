@@ -11,31 +11,41 @@ public class BecasInicio extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        Color bgColor = new Color(10, 20, 60);
-        Color sideColor = new Color(20, 30, 90);
+        // Colores
+        Color leftColor = new Color(10, 20, 60);   // Azul oscuro
+        Color rightColor = new Color(90, 20, 40);  // Rojo vino
         Color textColor = Color.WHITE;
         Font font = new Font("SansSerif", Font.PLAIN, 14);
 
-        // Panel lateral izquierdo (menú)
-        JPanel menuPanel = new JPanel();
-        menuPanel.setBackground(bgColor);
-        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
-        menuPanel.setPreferredSize(new Dimension(180, getHeight()));
+        // Panel izquierdo - tamaño fijo
+        JPanel leftPanel = new JPanel();
+        leftPanel.setBackground(leftColor);
+        leftPanel.setPreferredSize(new Dimension(180, getHeight()));
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 
-        JLabel title = new JLabel("UBC");
-        title.setFont(new Font("Serif", Font.BOLD, 18));
-        title.setForeground(textColor);
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        menuPanel.add(Box.createVerticalStrut(20));
-        menuPanel.add(title);
-        menuPanel.add(Box.createVerticalStrut(20));
+        JLabel leftLabel = new JLabel("Panel Izquierdo");
+        leftLabel.setForeground(textColor);
+        leftLabel.setFont(font);
+        leftLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(leftLabel);
+
+        // Panel derecho - ocupa el resto del espacio
+        JPanel rightPanel = new JPanel();
+        rightPanel.setBackground(rightColor);
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+
+        JLabel rightLabel = new JLabel("Panel Derecho (Espacio restante)");
+        rightLabel.setForeground(textColor);
+        rightLabel.setFont(font);
+        rightLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        rightPanel.add(Box.createVerticalStrut(20));
+        rightPanel.add(rightLabel);
+
+        // Agregar al frame
+        add(leftPanel, BorderLayout.WEST);
+        add(rightPanel, BorderLayout.CENTER);  // El centro ocupa todo el resto del espacio
 
         setVisible(true);
-    }
-
-    private JLabel createRoleLabel(String text) {
-        JLabel label = new JLabel(text, SwingConstants.CENTER);
-        label.setForeground(Color.WHITE);
-        return label;
     }
 }

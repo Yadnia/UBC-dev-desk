@@ -16,19 +16,19 @@ public class Inicio extends JFrame {
         setVisible(true);
         setTitle("SCEBE - Sistema de Control de Estudiantes Becados");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(900, 600);
+        setSize(1000, 800);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         //hibernate
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("✅ ¡Hibernate se conectó con éxito!");
-
-        session.close();
-        sessionFactory.close();
+//        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+//        Session session = sessionFactory.openSession();
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("✅ ¡Hibernate se conectó con éxito!");
+//
+//        session.close();
+//        sessionFactory.close();
 
 
         System.out.println("hola mundo");
@@ -84,6 +84,7 @@ public class Inicio extends JFrame {
             boton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new Login().setVisible(true);
+                    dispose();
                 }
             });
             panelDerecho.add(boton);

@@ -24,6 +24,9 @@ public class Usuario {
     @Column (name = "edad")
     private int edad ;
 
+    @Column(name = "password")
+    private String password ;
+
     @ManyToOne
     @JoinColumn(name = "tipo-usuario")
     private TipoUsuario tipoUsuario;
@@ -31,12 +34,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String correo, String nombres, String apellidos, String celular, int edad, TipoUsuario tipoUsuario) {
+    public Usuario(String correo, String nombres, String apellidos, String celular, int edad,String password, TipoUsuario tipoUsuario) {
         this.correo = correo;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.celular = celular;
         this.edad = edad;
+        this.password = password;
         this.tipoUsuario = tipoUsuario;
     }
 
@@ -66,6 +70,14 @@ public class Usuario {
 
     public String getApellidos() {
         return apellidos;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setApellidos(String apellidos) {
@@ -105,6 +117,7 @@ public class Usuario {
                 ", apellidos='" + apellidos + '\'' +
                 ", celular='" + celular + '\'' +
                 ", edad=" + edad +
+                ", password='" + password + '\'' +
                 ", tipoUsuario=" + tipoUsuario +
                 '}';
     }
