@@ -3,6 +3,8 @@ package org.Yaed.entity;
 import jakarta.persistence.*;
 import org.checkerframework.checker.units.qual.C;
 
+import java.util.List;
+
 @Entity
 public class EstadoEstudiante {
     @Id
@@ -11,6 +13,9 @@ public class EstadoEstudiante {
 
     @Column(name = "nombre")
     private String nombre;
+
+    @OneToMany(mappedBy = "estado")
+    private List<Estudiante> estudiantes ;
 
     public EstadoEstudiante() {
     }
@@ -26,6 +31,7 @@ public class EstadoEstudiante {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getNombre() {
         return nombre;
