@@ -14,3 +14,4 @@ public class DeportesInicio extends JFrame {
         setLayout(new BorderLayout());
         setVisible(true);
     }
+}
