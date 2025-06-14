@@ -1,5 +1,6 @@
 package org.Yaed.windows;
 
+//ftbecasmodule
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,4 +14,3 @@ public class DeportesInicio extends JFrame {
         setLayout(new BorderLayout());
         setVisible(true);
     }
-}
