@@ -1,14 +1,12 @@
 package org.Yaed.windows;
 
-import org.Yaed.controller.UserController;
+import org.Yaed.entity.TipoUsuario;
 import org.Yaed.entity.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.Yaed.controller.UserController.getUsers;
@@ -84,7 +82,9 @@ public class Login extends JFrame {
                 String user = userField.getText();
                 char[] pass = passField.getPassword();
                 if (existentUser(user, new String(pass))) {
-                        new BecasInicio().setVisible(true);
+                       Usuario usuario = getUsuario(user);
+                       tipoUsuario(usuario);
+//                        new BecasInicio().setVisible(true);
                         dispose();
                     } else {
                             JOptionPane.showMessageDialog(null, "Usuario no encontrado");
@@ -120,4 +120,27 @@ public class Login extends JFrame {
         }
         return false;
     }
+
+    private static void tipoUsuario(Usuario usuario){
+        int iduser = usuario.getTipoUsuario().getId();
+        if (iduser == 1){
+            new AdminInicio().setVisible(true);
+        } else if (iduser == 2){
+            new BecasInicio().setVisible(true);
+        } else if (iduser == 3){
+            new CulturaInicio().setVisible(true);
+        } else if (iduser == 4){
+            new DeportesInicio().setVisible(true);
+        }
+    }
+    private static Usuario getUsuario(String usuario) {
+        List<Usuario> usuarios = getUsers();
+        for (Usuario user : usuarios) {
+            if (user.getUsuario().equalsIgnoreCase(usuario)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
 }
