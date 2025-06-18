@@ -69,7 +69,7 @@ public class Estudiante {
     private List<ActividadesEstudiantesCultura> actividadesEstudiantesCulturas;
 
     @OneToMany(mappedBy = "estudiante")
-    private List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantesCulturas;
+    private List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantes;
 
     public Estudiante() {
     }
@@ -93,7 +93,7 @@ public class Estudiante {
         this.gruposDeportesEstudiantes = gruposDeportesEstudiantes;
         this.documentosEstudiantes = documentosEstudiantes;
         this.actividadesEstudiantesCulturas = actividadesEstudiantesCulturas;
-        this.actividadesDeportesEstudiantesCulturas = actividadesDeportesEstudiantesCulturas;
+        this.actividadesDeportesEstudiantes = actividadesDeportesEstudiantesCulturas;
     }
 
     public String getCarnet() {
@@ -248,13 +248,6 @@ public class Estudiante {
         this.actividadesEstudiantesCulturas = actividadesEstudiantesCulturas;
     }
 
-    public List<ActividadesDeportesEstudiantes> getActividadesDeportesEstudiantesCulturas() {
-        return actividadesDeportesEstudiantesCulturas;
-    }
-
-    public void setActividadesDeportesEstudiantesCulturas(List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantesCulturas) {
-        this.actividadesDeportesEstudiantesCulturas = actividadesDeportesEstudiantesCulturas;
-    }
 
     @Override
     public String toString() {
@@ -278,7 +271,7 @@ public class Estudiante {
                 ", gruposDeportesEstudiantes=" + gruposDeportesEstudiantes +
                 ", documentosEstudiantes=" + documentosEstudiantes +
                 ", actividadesEstudiantesCulturas=" + actividadesEstudiantesCulturas +
-                ", actividadesDeportesEstudiantesCulturas=" + actividadesDeportesEstudiantesCulturas +
+                ", actividadesEstudiantesDeportes" + actividadesDeportesEstudiantes +
                 '}';
     }
 }

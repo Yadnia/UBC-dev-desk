@@ -40,15 +40,23 @@ public class GenericServiceImpl <T> implements IGenericService<T>{
     }
 
     @Override
-    public void update(T object) {
-        dao.update(object);
-
+// Dentro de GenericServiceImpl
+    public void update(T entidad) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.merge(entidad); // Usar merge en vez de update
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
     public void delete(T object) {
-        dao.delete(object);
-
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        T merged = (T) session.merge(object);
+        session.delete(merged);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override

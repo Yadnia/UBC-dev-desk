@@ -24,5 +24,27 @@ public class App {
             UserController.saveUser(usuario);
         }
 
+                for (int i=0; i < 5; i++){
+            Estudiante estudiante = new Estudiante();
+            estudiante.setCarnet("125683" +i);
+            estudiante.setNombre("Una" +i);
+            estudiante.setApellido("Rodriguez" +i);
+            estudiante.setTelefono("32"+i);
+            estudiante.setFotoURL(null);
+            estudiante.setSexo('M');
+            List<Etnia> etnias = EstudiantesController.getEtnias();
+            estudiante.setEtnia(etnias.getFirst());
+            List<Carrera> carreras = CarrerasController.getCarreras();
+            estudiante.setCarrera(carreras.getLast());
+            List<Sede> sedes = CarrerasController.getSedes();
+            estudiante.setSede(sedes.getFirst());
+            List<EstadoEstudiante> estados = EstudiantesController.getEstadoEstudiantes();
+            estudiante.setEstado(estados.getFirst());
+            List<TipoEstudiante> tipoEstudiantes = EstudiantesController.getTipoEstudiantes();
+            estudiante.setTipoEstudiante(tipoEstudiantes.get(1));
+            estudiante.setBecaid(null);
+            EstudiantesController.saveEstudiante(estudiante);
+        }
+
     }
 }

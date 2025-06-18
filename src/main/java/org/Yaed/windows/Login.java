@@ -1,6 +1,5 @@
 package org.Yaed.windows;
 
-import org.Yaed.entity.TipoUsuario;
 import org.Yaed.entity.Usuario;
 
 import javax.swing.*;
@@ -50,6 +49,14 @@ public class Login extends JFrame {
         JPasswordField passField = new JPasswordField();
         styleTextField(passField);
 
+        // Agregar listener para clic en contraseña
+        passField.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                JOptionPane.showMessageDialog(null, "Iniciar como admin");
+            }
+        });
+
         formPanel.add(userLabel);
         formPanel.add(userField);
         formPanel.add(passLabel);
@@ -82,16 +89,12 @@ public class Login extends JFrame {
                 String user = userField.getText();
                 char[] pass = passField.getPassword();
                 if (existentUser(user, new String(pass))) {
-                       Usuario usuario = getUsuario(user);
-                       tipoUsuario(usuario);
-//                        new BecasInicio().setVisible(true);
-                        dispose();
-                    } else {
-                            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
-                    }
-
-//                new BecasInicio().setVisible(true);
-//                dispose();
+                    Usuario usuario = getUsuario(user);
+                    tipoUsuario(usuario);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                }
             }
         });
 
@@ -114,7 +117,7 @@ public class Login extends JFrame {
     private static boolean existentUser(String usuario, String password){
         List<Usuario> usuarios = getUsers();
         for (Usuario user: usuarios){
-            if (user.getUsuario().equalsIgnoreCase(usuario)&& user.getPassword().equals(password)){
+            if (user.getUsuario().equalsIgnoreCase(usuario) && user.getPassword().equals(password)){
                 return true;
             }
         }
@@ -133,6 +136,7 @@ public class Login extends JFrame {
             new DeportesInicio().setVisible(true);
         }
     }
+
     private static Usuario getUsuario(String usuario) {
         List<Usuario> usuarios = getUsers();
         for (Usuario user : usuarios) {
@@ -142,5 +146,4 @@ public class Login extends JFrame {
         }
         return null;
     }
-
 }

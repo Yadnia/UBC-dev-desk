@@ -7,6 +7,7 @@ import org.Yaed.entity.TipoEstudiante;
 import org.Yaed.services.GenericServiceImpl;
 import org.Yaed.services.IGenericService;
 import org.Yaed.util.HibernateUtil;
+import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,11 +83,11 @@ public class EstudiantesController {
         IGenericService<Etnia> etniaService = new GenericServiceImpl<>(Etnia.class, HibernateUtil.getSessionFactory());
         etniaService.save(etnia);
     }
-    public static void updateTipoEstudiante(Etnia etnia) {
+    public static void updateEtnia(Etnia etnia) {
         IGenericService<Etnia> etniaService = new GenericServiceImpl<>(Etnia.class, HibernateUtil.getSessionFactory());
         etniaService.update(etnia);
     }
-    public static void deleteTipoEstudiante(Etnia etnia) {
+    public static void deleteEtnia(Etnia etnia) {
         IGenericService<Etnia> etniaService = new GenericServiceImpl<>(Etnia.class, HibernateUtil.getSessionFactory());
         etniaService.delete(etnia);
     }
@@ -96,4 +97,7 @@ public class EstudiantesController {
         etnias = etniaService.getAll();
         return etnias;
     }
+
+
+
 }
