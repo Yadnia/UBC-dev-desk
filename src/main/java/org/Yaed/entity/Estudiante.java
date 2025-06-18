@@ -9,6 +9,8 @@ import java.util.List;
 public class Estudiante {
     @Id
     private String carnet;
+    @Column(name = "cedula")
+    private String cedula;
     @Column (name = "nombres")
     private String nombre;
     @Column (name = "apellidos")
@@ -74,7 +76,9 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(String nombre, String apellido, String telefono, Etnia etnia, Carrera carrera, String fotoURL, Sede sede, char sexo, EstadoEstudiante estado, TipoEstudiante tipoEstudiante, Beca becaid, List<HabitacionesEstudiantes> habitaciones, List<LlamadosEstudiantes> llamadosEstudiantes, List<ActividadesEstudiantesPsicologia> actividadesEstudiantePsicologias, List<GruposCulturaEstudiantes> gruposCulturaEstudiantes, List<GruposDeportesEstudiantes> gruposDeportesEstudiantes, List<DocumentosEstudiantes> documentosEstudiantes, List<ActividadesEstudiantesCultura> actividadesEstudiantesCulturas, List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantesCulturas) {
+    public Estudiante(String carnet, String cedula, String nombre, String apellido, String telefono, Etnia etnia, Carrera carrera, String fotoURL, Sede sede, char sexo, EstadoEstudiante estado, TipoEstudiante tipoEstudiante, Beca becaid, List<HabitacionesEstudiantes> habitaciones, List<LlamadosEstudiantes> llamadosEstudiantes, List<ActividadesEstudiantesPsicologia> actividadesEstudiantePsicologias, List<GruposCulturaEstudiantes> gruposCulturaEstudiantes, List<GruposDeportesEstudiantes> gruposDeportesEstudiantes, List<DocumentosEstudiantes> documentosEstudiantes, List<ActividadesEstudiantesCultura> actividadesEstudiantesCulturas, List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantesCulturas) {
+        this.carnet = carnet;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -102,6 +106,14 @@ public class Estudiante {
 
     public void setCarnet(String carnet) {
         this.carnet = carnet;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -253,6 +265,7 @@ public class Estudiante {
     public String toString() {
         return "Estudiante{" +
                 "carnet='" + carnet + '\'' +
+                ", cedula='" + cedula + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", telefono='" + telefono + '\'' +
@@ -275,4 +288,3 @@ public class Estudiante {
                 '}';
     }
 }
-

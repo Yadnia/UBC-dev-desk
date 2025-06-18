@@ -11,11 +11,11 @@ import java.util.List;
 
 public class AgregarEstudiante extends JFrame {
 
-    private JTextField txtCarnet, txtNombres, txtApellidos, txtCelular;
+    private JTextField txtCarnet, txtCedula, txtNombres, txtApellidos, txtCelular;
     private JComboBox<String> comboEtnia, comboCarrera, comboSede, comboGenero, comboEstado, comboBeca;
 
     // Labels
-    private JLabel lblCarnet, lblNombres, lblApellidos, lblCelular, lblEtnia, lblCarrera, lblSede, lblGenero, lblEstado, lblBeca;
+    private JLabel lblCarnet, lblCedula, lblNombres, lblApellidos, lblCelular, lblEtnia, lblCarrera, lblSede, lblGenero, lblEstado, lblBeca;
 
     // Botones que puedes modificar luego
     private JButton btnConfirmar, btnCancelar;
@@ -45,46 +45,50 @@ public class AgregarEstudiante extends JFrame {
         lblCarnet = crearLabel("Carnet:", 0, 0, fuente, colorTexto, gbc);
         txtCarnet = crearTextField(1, 0, gbc);
 
-        lblNombres = crearLabel("Nombres:", 0, 1, fuente, colorTexto, gbc);
-        txtNombres = crearTextField(1, 1, gbc);
+        // Campo: Cédula
+        lblCedula = crearLabel("Cédula:", 0, 1, fuente, colorTexto, gbc);
+        txtCedula = crearTextField(1, 1, gbc);
 
-        lblApellidos = crearLabel("Apellidos:", 0, 2, fuente, colorTexto, gbc);
-        txtApellidos = crearTextField(1, 2, gbc);
+        lblNombres = crearLabel("Nombres:", 0, 2, fuente, colorTexto, gbc);
+        txtNombres = crearTextField(1, 2, gbc);
 
-        lblCelular = crearLabel("Celular (xxxx-xxxx):", 0, 3, fuente, colorTexto, gbc);
-        txtCelular = crearTextField(1, 3, gbc);
+        lblApellidos = crearLabel("Apellidos:", 0, 3, fuente, colorTexto, gbc);
+        txtApellidos = crearTextField(1, 3, gbc);
+
+        lblCelular = crearLabel("Celular (xxxx-xxxx):", 0, 4, fuente, colorTexto, gbc);
+        txtCelular = crearTextField(1, 4, gbc);
 
         // Etnia
-        lblEtnia = crearLabel("Etnia:", 0, 4, fuente, colorTexto, gbc);
+        lblEtnia = crearLabel("Etnia:", 0, 5, fuente, colorTexto, gbc);
         etnias = EstudiantesController.getEtnias();
-        comboEtnia = crearComboBoxDesdeLista(etnias, gbc, 1, 4);
+        comboEtnia = crearComboBoxDesdeLista(etnias, gbc, 1, 5);
 
         // Carrera
-        lblCarrera = crearLabel("Carrera:", 0, 5, fuente, colorTexto, gbc);
+        lblCarrera = crearLabel("Carrera:", 0, 6, fuente, colorTexto, gbc);
         carreras = CarrerasController.getCarreras();
-        comboCarrera = crearComboBoxDesdeLista(carreras, gbc, 1, 5);
+        comboCarrera = crearComboBoxDesdeLista(carreras, gbc, 1, 6);
 
         // Sede
-        lblSede = crearLabel("Sede:", 0, 6, fuente, colorTexto, gbc);
+        lblSede = crearLabel("Sede:", 0, 7, fuente, colorTexto, gbc);
         sedes = CarrerasController.getSedes();
-        comboSede = crearComboBoxDesdeLista(sedes, gbc, 1, 6);
+        comboSede = crearComboBoxDesdeLista(sedes, gbc, 1, 7);
 
         // Género
-        lblGenero = crearLabel("Género:", 0, 7, fuente, colorTexto, gbc);
+        lblGenero = crearLabel("Género:", 0, 8, fuente, colorTexto, gbc);
         comboGenero = new JComboBox<>(new String[]{"Masculino", "Femenino", "Otro"});
         gbc.gridx = 1;
-        gbc.gridy = 7;
+        gbc.gridy = 8;
         add(comboGenero, gbc);
 
         // Estado
-        lblEstado = crearLabel("Estado:", 0, 8, fuente, colorTexto, gbc);
+        lblEstado = crearLabel("Estado:", 0, 9, fuente, colorTexto, gbc);
         estados = EstudiantesController.getEstadoEstudiantes();
-        comboEstado = crearComboBoxDesdeLista(estados, gbc, 1, 8);
+        comboEstado = crearComboBoxDesdeLista(estados, gbc, 1, 9);
 
         // Beca
-        lblBeca = crearLabel("Tipo de beca:", 0, 9, fuente, colorTexto, gbc);
+        lblBeca = crearLabel("Tipo de beca:", 0, 10, fuente, colorTexto, gbc);
         becas = BecasController.getBecas();
-        comboBeca = crearComboBoxDesdeLista(becas, gbc, 1, 9);
+        comboBeca = crearComboBoxDesdeLista(becas, gbc, 1, 10);
 
         // Botones Confirmar y Cancelar
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -94,7 +98,7 @@ public class AgregarEstudiante extends JFrame {
         panelBotones.add(btnConfirmar);
         panelBotones.add(btnCancelar);
         gbc.gridx = 0;
-        gbc.gridy = 10; // Cambia a 10 porque se elimina la fila de foto
+        gbc.gridy = 11; // Cambia a 11 porque se agrega la fila de cédula
         gbc.gridwidth = 3;
         add(panelBotones, gbc);
 
@@ -104,6 +108,27 @@ public class AgregarEstudiante extends JFrame {
 
     private void guardarEstudiante() {
         String carnet = txtCarnet.getText().trim();
+        String cedula = txtCedula.getText().trim();
+        String nombres = txtNombres.getText().trim();
+        String apellidos = txtApellidos.getText().trim();
+        String celular = txtCelular.getText().trim();
+
+        // Validaciones de campos vacíos
+        if (carnet.isEmpty() ||
+            cedula.isEmpty() ||
+            nombres.isEmpty() ||
+            apellidos.isEmpty() ||
+            celular.isEmpty() ||
+            comboEtnia.getSelectedItem() == null ||
+            comboCarrera.getSelectedItem() == null ||
+            comboSede.getSelectedItem() == null ||
+            comboGenero.getSelectedItem() == null ||
+            comboEstado.getSelectedItem() == null ||
+            comboBeca.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         if (carnetExiste(carnet)) {
             JOptionPane.showMessageDialog(this, "Estudiante ya existe", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -111,9 +136,10 @@ public class AgregarEstudiante extends JFrame {
 
         Estudiante estudianteAgregar = new Estudiante();
         estudianteAgregar.setCarnet(carnet);
-        estudianteAgregar.setNombre(txtNombres.getText().trim());
-        estudianteAgregar.setApellido(txtApellidos.getText().trim());
-        estudianteAgregar.setTelefono(txtCelular.getText().trim());
+        estudianteAgregar.setCedula(cedula);
+        estudianteAgregar.setNombre(nombres);
+        estudianteAgregar.setApellido(apellidos);
+        estudianteAgregar.setTelefono(celular);
 
         for (Etnia etnia : etnias)
             if (etnia.getNombre().equals(comboEtnia.getSelectedItem()))

@@ -213,7 +213,6 @@ public class ListadoEstudiantes extends JFrame {
         editButton.setForeground(Color.WHITE);
         editButton.setFocusPainted(false);
         editButton.setBorderPainted(false);
-
 // Agregar al panel
         panelUp.add(searchField);
         panelUp.add(searchButton);
@@ -319,6 +318,29 @@ public class ListadoEstudiantes extends JFrame {
 
 
 // Agregar los paneles principales al frame
+        editButton.addActionListener(e -> {
+            int filaSeleccionada = tablaEstudiantes.getSelectedRow();
+            if (filaSeleccionada != -1) {
+                String carnet = tablaEstudiantes.getValueAt(filaSeleccionada, 3).toString();
+                List<Estudiante> estudiantes = EstudiantesController.getEstudiantes();
+                Estudiante estudianteSeleccionado = null;
+                for (Estudiante estudiante : estudiantes) {
+                    if (estudiante.getCarnet().equalsIgnoreCase(carnet)) {
+                        estudianteSeleccionado = estudiante;
+                        break;
+                    }
+                }
+                if (estudianteSeleccionado != null) {
+                    new EditarEstudiante(estudianteSeleccionado).setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró el estudiante.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un estudiante para editar.");
+            }
+        });
+
+
         add(leftPanel, BorderLayout.WEST);
         add(rightPanel, BorderLayout.CENTER);
         setVisible(true);
