@@ -6,7 +6,7 @@ import java.awt.*;
 public class Habitaciones extends JFrame {
     public Habitaciones() {
         setTitle("SCeBE - Habitaciones");
-        setSize(1000, 600);
+        setSize(1200, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -16,7 +16,6 @@ public class Habitaciones extends JFrame {
         Color rightColor = new Color(40, 51, 106);
         Color textColor = Color.WHITE;
         Font fuente = new Font("Outfit", Font.BOLD, 15);
-        Font fuente1 = new Font("Outfit", Font.BOLD, 14);
 
         // Panel izquierdo (solo botón UBC)
         JPanel leftPanel = new JPanel();
@@ -39,6 +38,7 @@ public class Habitaciones extends JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 leftButton.setBackground(hoverBg);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 leftButton.setBackground(normalBg);
             }
@@ -84,17 +84,17 @@ public class Habitaciones extends JFrame {
         panelUp.add(searchField);
         panelUp.add(searchButton);
 
-        // Panel inferior (contenido) - aquí van los cuadros
+        // Panel inferior (contenido)
         JPanel panelDown = new JPanel();
         panelDown.setBackground(rightColor);
-        panelDown.setLayout(null); // Usamos layout absoluto para tamaños personalizados
+        panelDown.setLayout(null);
         rightPanel.add(panelDown, BorderLayout.CENTER);
 
-        // 2 cuadros muy grandes
+        // Cuadros grandes
         for (int i = 0; i < 2; i++) {
             JPanel panelGrande = new JPanel();
             panelGrande.setBackground(new Color(30, 60, 120));
-            panelGrande.setBounds(40 + i * 420, 30, 380, 180);
+            panelGrande.setBounds(50 + i * 500, 30, 420, 150);
             panelGrande.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
             JLabel label = new JLabel("Habitación Grande " + (i + 1));
             label.setForeground(Color.WHITE);
@@ -103,13 +103,13 @@ public class Habitaciones extends JFrame {
             panelDown.add(panelGrande);
         }
 
-        // 10 cuadros medianos
+        // Cuadros medianos
         for (int i = 0; i < 10; i++) {
             JPanel panelMediano = new JPanel();
             panelMediano.setBackground(new Color(50, 90, 160));
-            int x = 40 + (i % 5) * 180;
-            int y = 230 + (i / 5) * 110;
-            panelMediano.setBounds(x, y, 160, 90);
+            int x = 40 + (i % 5) * 200;
+            int y = 200 + (i / 5) * 110;
+            panelMediano.setBounds(x, y, 180, 90);
             panelMediano.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
             JLabel label = new JLabel("Mediana " + (i + 1));
             label.setForeground(Color.WHITE);
@@ -118,24 +118,36 @@ public class Habitaciones extends JFrame {
             panelDown.add(panelMediano);
         }
 
-        // 8 cuadros pequeños
-        for (int i = 0; i < 8; i++) {
+        // Cuadros pequeños: todos en una sola fila de 8
+        int cantidad = 8;
+        int anchoPequeno = 100;
+        int altoPequeno = 220;
+        int espacioX = 20;
+        int inicioX = 30;
+        int inicioY = 460; // una sola fila
+
+        for (int i = 0; i < cantidad; i++) {
             JPanel panelPequeno = new JPanel();
             panelPequeno.setBackground(new Color(80, 120, 180));
-            int x = 40 + (i % 8) * 110;
-            int y = 350;
-            panelPequeno.setBounds(x, y + (i / 8) * 60, 90, 50);
+            panelPequeno.setLayout(new GridLayout(12, 1, 0, 2)); // 12 filas
+
+            int x = inicioX + i * (anchoPequeno + espacioX);
+            int y = inicioY;
+            panelPequeno.setBounds(x, y, anchoPequeno, altoPequeno);
             panelPequeno.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-            JLabel label = new JLabel("Pequeña " + (i + 1));
-            label.setForeground(Color.WHITE);
-            label.setFont(new Font("Outfit", Font.PLAIN, 11));
-            panelPequeno.add(label);
+
+            // Agregar 12 labels
+            for (int j = 0; j < 12; j++) {
+                JLabel label = new JLabel("Est " + (j + 1), SwingConstants.CENTER);
+                label.setFont(new Font("Outfit", Font.PLAIN, 11));
+                label.setForeground(Color.WHITE);
+                panelPequeno.add(label);
+            }
+
             panelDown.add(panelPequeno);
         }
-
         add(leftPanel, BorderLayout.WEST);
         add(rightPanel, BorderLayout.CENTER);
-
         setVisible(true);
     }
 }
