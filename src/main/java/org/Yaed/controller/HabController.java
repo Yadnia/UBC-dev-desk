@@ -53,17 +53,18 @@ public class HabController {
         List<Estudiante> grupo8 = new ArrayList<>();
         List<Estudiante> listaTotalEstudiantes = EstudiantesController.getEstudiantes();
 
-        Habitaciones.dividirEstudiantesFBeca2(listaTotalEstudiantes, grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8);
+        dividirEstudiantesFBeca2(listaTotalEstudiantes, grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8);
 
         //casa 1
         for (Estudiante e : grupo1) {
             JLabel label = new JLabel(e.getNombre() + " " + e.getApellido());
             List <Habitacion> habs = HabController.getHabitaciones();
-            Habitacion cuarto = habs.get(0);
+            Habitacion cuarto = habs.getFirst();
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -74,8 +75,9 @@ public class HabController {
             Habitacion cuarto = habs.get(1);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -86,8 +88,9 @@ public class HabController {
             Habitacion cuarto = habs.get(2);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -97,7 +100,9 @@ public class HabController {
             Habitacion cuarto = habs.get(3);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto,"");
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -107,8 +112,9 @@ public class HabController {
             Habitacion cuarto = habs.get(4);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -118,8 +124,9 @@ public class HabController {
             Habitacion cuarto = habs.get(5);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -129,8 +136,9 @@ public class HabController {
             Habitacion cuarto = habs.get(5);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -140,8 +148,9 @@ public class HabController {
             Habitacion cuarto = habs.get(6);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -160,8 +169,9 @@ public class HabController {
             Habitacion cuarto = habs.get(0);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -172,8 +182,9 @@ public class HabController {
             Habitacion cuarto = habs.get(1);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -199,8 +210,9 @@ public class HabController {
             Habitacion cuarto = habs.get(0);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -211,8 +223,9 @@ public class HabController {
             Habitacion cuarto = habs.get(1);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -223,8 +236,9 @@ public class HabController {
             Habitacion cuarto = habs.get(2);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -235,8 +249,9 @@ public class HabController {
             Habitacion cuarto = habs.get(3);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -247,8 +262,9 @@ public class HabController {
             Habitacion cuarto = habs.get(4);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -259,8 +275,9 @@ public class HabController {
             Habitacion cuarto = habs.get(5);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion = "";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
@@ -271,11 +288,47 @@ public class HabController {
             Habitacion cuarto = habs.get(6);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    String fechaAsignacion ="";
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
+                    String fechaAsignacion = "I Semestre";
+                    String anio = "2025";
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, anio,fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
             label.setForeground(Color.WHITE);
+        }
+    }
+    public static void dividirEstudiantesFBeca2(List<Estudiante> todos,
+                                                 List<Estudiante> grupo1,
+                                                 List<Estudiante> grupo2,
+                                                    List<Estudiante> grupo3,
+                                                    List<Estudiante> grupo4,
+                                                    List<Estudiante> grupo5,
+                                                    List<Estudiante> grupo6,
+                                                    List<Estudiante> grupo7,
+                                                    List<Estudiante> grupo8
+    ) {
+        // Limpiar listas
+        grupo1.clear(); grupo2.clear();
+
+        // Filtrar estudiantes mujeres con beca ID 2
+        List<Estudiante> filtradas = new ArrayList<>();
+        for (Estudiante e : todos) {
+            if (Character.toUpperCase(e.getSexo()) == 'F' && e.getBecaid() != null && e.getBecaid().getId() == 2) {
+                filtradas.add(e);
+            }
+        }
+
+        // Mezclar aleatoriamente
+        Collections.shuffle(filtradas);
+
+        // Dividir en grupos de 12 estudiantes máximo
+        for (int i = 0; i < filtradas.size(); i++) {
+            Estudiante estudiante = filtradas.get(i);
+            int grupo = i / 8;
+            switch (grupo) {
+                case 0 -> grupo1.add(estudiante);
+                case 1 -> grupo2.add(estudiante);
+                default -> {}
+            }
         }
     }
 
