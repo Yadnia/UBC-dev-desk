@@ -118,80 +118,136 @@ public class Habitaciones extends JFrame {
         JButton panelGrande2 = createRoomButton("Habitación Grande 2", new Color(30, 60, 120), Color.WHITE);
         panelGrande2.setBounds(500, 30, 420, 150);
         panelDown.add(panelGrande2);
+        panelGrande2.addActionListener( e ->{
+            new HabitacionG2();
+        });
 
    // Crear botones para habitaciones medianas
   JButton panelMediano1 = createRoomButton("Habitación Mediana 1", new Color(50, 90, 160), Color.WHITE);
    panelMediano1.setBounds(40, 200, 150, 90);
    panelDown.add(panelMediano1);
+    panelMediano1.addActionListener( e ->{
+         new HabitacionM1();
+    });
 
    JButton panelMediano2 = createRoomButton("Habitación Mediana 2", new Color(50, 90, 160), Color.WHITE);
    panelMediano2.setBounds(210, 200, 150, 90);
    panelDown.add(panelMediano2);
+    panelMediano2.addActionListener( e ->{
+         new HabitacionM2();
+    });
 
    JButton panelMediano3 = createRoomButton("Habitación Mediana 3", new Color(50, 90, 160), Color.WHITE);
    panelMediano3.setBounds(380, 200, 150, 90);
    panelDown.add(panelMediano3);
+    panelMediano3.addActionListener( e ->{
+         new HabitacionM3();
+    });
 
    JButton panelMediano4 = createRoomButton("Habitación Mediana 4", new Color(50, 90, 160), Color.WHITE);
    panelMediano4.setBounds(550, 200, 150, 90);
    panelDown.add(panelMediano4);
+    panelMediano4.addActionListener( e ->{
+         new HabitacionM4();
+    });
 
    JButton panelMediano5 = createRoomButton("Habitación Mediana 5", new Color(50, 90, 160), Color.WHITE);
    panelMediano5.setBounds(720, 200, 150, 90);
    panelDown.add(panelMediano5);
+    panelMediano5.addActionListener( e ->{
+         new HabitacionM5();
+    });
 
    JButton panelMediano6 = createRoomButton("Habitación Mediana 6", new Color(50, 90, 160), Color.WHITE);
    panelMediano6.setBounds(40, 320, 150, 90);
    panelDown.add(panelMediano6);
+    panelMediano6.addActionListener( e ->{
+         new HabitacionM6();
+    });
 
    JButton panelMediano7 = createRoomButton("Habitación Mediana 7", new Color(50, 90, 160), Color.WHITE);
    panelMediano7.setBounds(210, 320, 150, 90);
    panelDown.add(panelMediano7);
+    panelMediano7.addActionListener( e ->{
+         new HabitacionM7();
+    });
 
    JButton panelMediano8 = createRoomButton("Habitación Mediana 8", new Color(50, 90, 160), Color.WHITE);
    panelMediano8.setBounds(380, 320, 150, 90);
    panelDown.add(panelMediano8);
+    panelMediano8.addActionListener( e ->{
+         new HabitacionM8();
+    });
 
    JButton panelMediano9 = createRoomButton("Habitación Mediana 9", new Color(50, 90, 160), Color.WHITE);
    panelMediano9.setBounds(550, 320, 150, 90);
    panelDown.add(panelMediano9);
+    panelMediano9.addActionListener( e ->{
+         new HabitacionM9();
+    });
 
    JButton panelMediano10 = createRoomButton("Habitación Mediana 10", new Color(50, 90, 160), Color.WHITE);
    panelMediano10.setBounds(720, 320, 150, 90);
    panelDown.add(panelMediano10);
+    panelMediano10.addActionListener( e ->{
+         new HabitacionM10();});
 
         // Crear botones para habitaciones pequeñas
       JButton panelPequeno1 = createRoomButton("Habitación Pequeña 1", new Color(80, 120, 180), Color.WHITE);
         panelPequeno1.setBounds(30, 460, 100, 100);
         panelDown.add(panelPequeno1);
+        panelPequeno1.addActionListener( e ->{
+            new HabitacionF1();
+        });
 
         JButton panelPequeno2 = createRoomButton("Habitación Pequeña 2", new Color(80, 120, 180), Color.WHITE);
         panelPequeno2.setBounds(150, 460, 100, 100);
         panelDown.add(panelPequeno2);
+        panelPequeno2.addActionListener( e ->{
+            new HabitacionF2();
+        });
 
         JButton panelPequeno3 = createRoomButton("Habitación Pequeña 3", new Color(80, 120, 180), Color.WHITE);
         panelPequeno3.setBounds(270, 460, 100, 100);
         panelDown.add(panelPequeno3);
+        panelPequeno3.addActionListener( e ->{
+            new HabitacionF3();
+        });
 
         JButton panelPequeno4 = createRoomButton("Habitación Pequeña 4", new Color(80, 120, 180), Color.WHITE);
         panelPequeno4.setBounds(390, 460, 100, 100);
         panelDown.add(panelPequeno4);
+        panelPequeno4.addActionListener( e ->{
+            new HabitacionF4();
+        });
 
         JButton panelPequeno5 = createRoomButton("Habitación Pequeña 5", new Color(80, 120, 180), Color.WHITE);
         panelPequeno5.setBounds(510, 460, 100, 100);
         panelDown.add(panelPequeno5);
+        panelPequeno5.addActionListener( e ->{
+            new HabitacionF5();
+        });
 
         JButton panelPequeno6 = createRoomButton("Habitación Pequeña 6", new Color(80, 120, 180), Color.WHITE);
         panelPequeno6.setBounds(630, 460, 100, 100);
         panelDown.add(panelPequeno6);
+        panelPequeno6.addActionListener( e ->{
+            new HabitacionF6();
+        });
 
         JButton panelPequeno7 = createRoomButton("Habitación Pequeña 7", new Color(80, 120, 180), Color.WHITE);
         panelPequeno7.setBounds(750, 460, 100, 100);
         panelDown.add(panelPequeno7);
+        panelPequeno7.addActionListener( e ->{
+            new HabitacionF7();
+        });
 
         JButton panelPequeno8 = createRoomButton("Habitación Pequeña 8", new Color(80, 120, 180), Color.WHITE);
         panelPequeno8.setBounds(870, 460, 100, 100);
         panelDown.add(panelPequeno8);
+        panelPequeno8.addActionListener( e ->{
+            new HabitacionF8();
+        });
 
         // Agregamos paneles al frame
         add(leftPanel, BorderLayout.WEST);

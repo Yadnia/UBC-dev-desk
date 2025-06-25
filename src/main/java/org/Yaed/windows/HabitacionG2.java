@@ -1,0 +1,105 @@
+package org.Yaed.windows;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+
+public class HabitacionG2 extends JFrame {
+    public HabitacionG2() {
+        setTitle("Casa Grande 2");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(700, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        // Colores similares a otras ventanas
+        Color bgColor = new Color(245, 245, 245);
+        Color accentColor = new Color(0, 102, 204);
+        Color tableHeaderColor = new Color(220, 220, 220);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(bgColor);
+        mainPanel.setLayout(new BorderLayout(20, 20));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+
+        // Título
+        JLabel titleLabel = new JLabel("Casa Grande 2 (Masculino)");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
+        titleLabel.setForeground(accentColor);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // Subtítulo
+        JLabel subtitleLabel = new JLabel("Cuarto 1");
+        subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        subtitleLabel.setForeground(Color.DARK_GRAY);
+        subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // Selector de mes y año (reemplaza el botón buscar por un combo de año)
+        JPanel selectorPanel = new JPanel();
+        selectorPanel.setBackground(bgColor);
+        selectorPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        JLabel mesLabel = new JLabel("Seleccionar periodo:");
+        mesLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        JComboBox<String> mesCombo = new JComboBox<>(new String[]{
+                "I Semestre", "II Semestre"
+        });
+        JLabel anioLabel = new JLabel("Año:");
+        anioLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        JComboBox<String> anioCombo = new JComboBox<>(new String[]{
+                "2023", "2024", "2025"
+        });
+        selectorPanel.add(mesLabel);
+        selectorPanel.add(mesCombo);
+        selectorPanel.add(anioLabel);
+        selectorPanel.add(anioCombo);
+
+        // Tabla bonita con 5 columnas
+        String[] columnas = {"Nombre", "Apellido", "Edad", "Etnia", "Semestre"};
+        DefaultTableModel model = new DefaultTableModel(columnas, 0);
+        JTable tabla = new JTable(model);
+        tabla.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tabla.setRowHeight(28);
+        tabla.setSelectionBackground(new Color(204, 229, 255));
+        tabla.setSelectionForeground(Color.BLACK);
+
+        // Encabezado bonito
+        tabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
+        tabla.getTableHeader().setBackground(tableHeaderColor);
+        tabla.getTableHeader().setForeground(accentColor);
+
+        // Centrar columnas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < tabla.getColumnCount(); i++) {
+            tabla.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(tabla);
+        scrollPane.setBorder(BorderFactory.createLineBorder(accentColor, 1));
+
+        // Layout
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
+        mainPanel.add(subtitleLabel, BorderLayout.BEFORE_FIRST_LINE);
+        mainPanel.add(selectorPanel, BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.SOUTH);
+
+        // Ajuste de layout para que todo quede bien distribuido
+        JPanel topPanel = new JPanel(new GridLayout(2, 1));
+        topPanel.setBackground(bgColor);
+        topPanel.add(titleLabel);
+        topPanel.add(subtitleLabel);
+
+        JPanel centerPanel = new JPanel(new BorderLayout(0, 15));
+        centerPanel.setBackground(bgColor);
+        centerPanel.add(selectorPanel, BorderLayout.NORTH);
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
+
+        mainPanel.removeAll();
+        mainPanel.setLayout(new BorderLayout(0, 15));
+        mainPanel.add(topPanel, BorderLayout.NORTH);
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+
+        setContentPane(mainPanel);
+    }
+}
