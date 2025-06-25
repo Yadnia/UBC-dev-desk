@@ -62,7 +62,7 @@ public class HabController {
             Habitacion cuarto = habs.get(0);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -74,7 +74,7 @@ public class HabController {
             Habitacion cuarto = habs.get(1);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -86,7 +86,7 @@ public class HabController {
             Habitacion cuarto = habs.get(2);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -97,7 +97,7 @@ public class HabController {
             Habitacion cuarto = habs.get(3);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, LocalDate.now());
+                    HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto,"");
                     HabController.saveAsignacion(habEstudiante);
                 }
         }
@@ -107,7 +107,7 @@ public class HabController {
             Habitacion cuarto = habs.get(4);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -118,7 +118,7 @@ public class HabController {
             Habitacion cuarto = habs.get(5);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -129,7 +129,7 @@ public class HabController {
             Habitacion cuarto = habs.get(5);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -140,7 +140,7 @@ public class HabController {
             Habitacion cuarto = habs.get(6);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -160,7 +160,7 @@ public class HabController {
             Habitacion cuarto = habs.get(0);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -172,7 +172,7 @@ public class HabController {
             Habitacion cuarto = habs.get(1);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -199,7 +199,7 @@ public class HabController {
             Habitacion cuarto = habs.get(0);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -211,7 +211,7 @@ public class HabController {
             Habitacion cuarto = habs.get(1);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -223,7 +223,7 @@ public class HabController {
             Habitacion cuarto = habs.get(2);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -235,7 +235,7 @@ public class HabController {
             Habitacion cuarto = habs.get(3);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -247,7 +247,7 @@ public class HabController {
             Habitacion cuarto = habs.get(4);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -259,7 +259,7 @@ public class HabController {
             Habitacion cuarto = habs.get(5);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion = "";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }
@@ -271,7 +271,7 @@ public class HabController {
             Habitacion cuarto = habs.get(6);
             for(Estudiante estudiante : listaTotalEstudiantes)
                 if (estudiante.getCarnet().equals(e.getCarnet())) {
-                    LocalDate fechaAsignacion = LocalDate.now().plusDays(1);
+                    String fechaAsignacion ="";
                     HabitacionesEstudiantes habEstudiante = new HabitacionesEstudiantes(estudiante, cuarto, fechaAsignacion);
                     HabController.saveAsignacion(habEstudiante);
                 }

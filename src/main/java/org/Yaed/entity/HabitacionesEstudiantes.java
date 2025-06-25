@@ -11,8 +11,8 @@ public class HabitacionesEstudiantes {
     @Column(name = "num-registro")
     private int numRegistro;
 
-    @Column (name = "fecha")
-    private LocalDate fecha;
+    @Column (name = "Semestre")
+    private String fecha;
 
     @ManyToOne
     @JoinColumn(name = "estudiante_id")
@@ -25,10 +25,10 @@ public class HabitacionesEstudiantes {
     public HabitacionesEstudiantes() {
     }
 
-    public HabitacionesEstudiantes(Estudiante estudiante, Habitacion habitacion, LocalDate fecha) {
+    public HabitacionesEstudiantes(Estudiante estudiante, Habitacion habitacion, String fecha) {
         this.estudiante = estudiante;
         this.habitacion = habitacion;
-        this.fecha = fecha;
+      this.fecha = fecha;
     }
 
     public int getNumRegistro() {
@@ -55,11 +55,11 @@ public class HabitacionesEstudiantes {
         this.habitacion = habitacion;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
