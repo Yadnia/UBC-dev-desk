@@ -1,4 +1,4 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosM;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

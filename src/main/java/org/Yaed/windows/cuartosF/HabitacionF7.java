@@ -1,18 +1,17 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosF;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class HabitacionM1 extends JFrame {
-    public HabitacionM1() {
-        setTitle("Casa Mediana 1");
+public class HabitacionF7 extends JFrame {
+    public HabitacionF7() {
+        setTitle("Casa Pequeña 7");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
         setVisible(true);
-
         // Colores similares a otras ventanas
         Color bgColor = new Color(245, 245, 245);
         Color accentColor = new Color(0, 102, 204);
@@ -23,19 +22,16 @@ public class HabitacionM1 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        // Título
-        JLabel titleLabel = new JLabel("Casa Mediana 1 (Masculino)");
+        JLabel titleLabel = new JLabel("Casa Pequeña 7 (Femenino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // Subtítulo
         JLabel subtitleLabel = new JLabel("Cuarto 1");
         subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         subtitleLabel.setForeground(Color.DARK_GRAY);
         subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // Selector de mes y año (reemplaza el botón buscar por un combo de año)
         JPanel selectorPanel = new JPanel();
         selectorPanel.setBackground(bgColor);
         selectorPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
@@ -63,12 +59,10 @@ public class HabitacionM1 extends JFrame {
         tabla.setSelectionBackground(new Color(204, 229, 255));
         tabla.setSelectionForeground(Color.BLACK);
 
-        // Encabezado bonito
         tabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         tabla.getTableHeader().setBackground(tableHeaderColor);
         tabla.getTableHeader().setForeground(accentColor);
 
-        // Centrar columnas
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < tabla.getColumnCount(); i++) {
@@ -78,13 +72,6 @@ public class HabitacionM1 extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tabla);
         scrollPane.setBorder(BorderFactory.createLineBorder(accentColor, 1));
 
-        // Layout
-        mainPanel.add(titleLabel, BorderLayout.NORTH);
-        mainPanel.add(subtitleLabel, BorderLayout.BEFORE_FIRST_LINE);
-        mainPanel.add(selectorPanel, BorderLayout.CENTER);
-        mainPanel.add(scrollPane, BorderLayout.SOUTH);
-
-        // Ajuste de layout para que todo quede bien distribuido
         JPanel topPanel = new JPanel(new GridLayout(2, 1));
         topPanel.setBackground(bgColor);
         topPanel.add(titleLabel);

@@ -1,13 +1,13 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosF;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class HabitacionF6 extends JFrame {
-    public HabitacionF6() {
-        setTitle("Casa Pequeña 6");
+public class HabitacionF2 extends JFrame {
+    public HabitacionF2() {
+        setTitle("Casa Pequeña 2");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
@@ -23,7 +23,7 @@ public class HabitacionF6 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JLabel titleLabel = new JLabel("Casa Pequeña 6 (Femenino)");
+        JLabel titleLabel = new JLabel("Casa Pequeña 2 (Femenino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);

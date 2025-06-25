@@ -1,17 +1,18 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosM;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class HabitacionF7 extends JFrame {
-    public HabitacionF7() {
-        setTitle("Casa Pequeña 7");
+public class HabitacionM8 extends JFrame {
+    public HabitacionM8() {
+        setTitle("Casa Mediana 8");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
         setVisible(true);
+
         // Colores similares a otras ventanas
         Color bgColor = new Color(245, 245, 245);
         Color accentColor = new Color(0, 102, 204);
@@ -22,12 +23,12 @@ public class HabitacionF7 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JLabel titleLabel = new JLabel("Casa Pequeña 7 (Femenino)");
+        JLabel titleLabel = new JLabel("Casa Mediana 8 (Masculino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel subtitleLabel = new JLabel("Cuarto 1");
+        JLabel subtitleLabel = new JLabel("Cuarto 8");
         subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         subtitleLabel.setForeground(Color.DARK_GRAY);
         subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,3 +91,4 @@ public class HabitacionF7 extends JFrame {
         setContentPane(mainPanel);
     }
 }
+

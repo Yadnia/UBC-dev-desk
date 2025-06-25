@@ -1,13 +1,13 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosM;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class HabitacionM8 extends JFrame {
-    public HabitacionM8() {
-        setTitle("Casa Mediana 8");
+public class HabitacionM6 extends JFrame {
+    public HabitacionM6() {
+        setTitle("Casa Mediana 6");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
@@ -23,12 +23,12 @@ public class HabitacionM8 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JLabel titleLabel = new JLabel("Casa Mediana 8 (Masculino)");
+        JLabel titleLabel = new JLabel("Casa Mediana 6 (Masculino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel subtitleLabel = new JLabel("Cuarto 8");
+        JLabel subtitleLabel = new JLabel("Cuarto 6");
         subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         subtitleLabel.setForeground(Color.DARK_GRAY);
         subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);

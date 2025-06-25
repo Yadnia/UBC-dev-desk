@@ -1,13 +1,13 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosM;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class HabitacionM7 extends JFrame {
-    public HabitacionM7() {
-        setTitle("Casa Mediana 7");
+public class HabitacionG1 extends JFrame {
+    public HabitacionG1() {
+        setTitle("Casa Grande 1");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
@@ -23,16 +23,19 @@ public class HabitacionM7 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JLabel titleLabel = new JLabel("Casa Mediana 7 (Masculino)");
+        // Título
+        JLabel titleLabel = new JLabel("Casa Grande 1 (Masculino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel subtitleLabel = new JLabel("Cuarto 7");
+        // Subtítulo
+        JLabel subtitleLabel = new JLabel("Cuarto 1");
         subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         subtitleLabel.setForeground(Color.DARK_GRAY);
         subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
+        // Selector de mes y año (reemplaza el botón buscar por un combo de año)
         JPanel selectorPanel = new JPanel();
         selectorPanel.setBackground(bgColor);
         selectorPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
@@ -52,18 +55,20 @@ public class HabitacionM7 extends JFrame {
         selectorPanel.add(anioCombo);
 
         // Tabla bonita con 5 columnas
-        String[] columnas = {"Nombre", "Apellido", "Edad", "Etnia", "Semestre"};
-        DefaultTableModel model = new DefaultTableModel(columnas, 0);
+String[] columnas = {"Nombre", "Apellido", "Edad", "Etnia", "Semestre"};
+DefaultTableModel model = new DefaultTableModel(columnas, 0);
         JTable tabla = new JTable(model);
         tabla.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         tabla.setRowHeight(28);
         tabla.setSelectionBackground(new Color(204, 229, 255));
         tabla.setSelectionForeground(Color.BLACK);
 
+        // Encabezado bonito
         tabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         tabla.getTableHeader().setBackground(tableHeaderColor);
         tabla.getTableHeader().setForeground(accentColor);
 
+        // Centrar columnas
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < tabla.getColumnCount(); i++) {
@@ -73,6 +78,13 @@ public class HabitacionM7 extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tabla);
         scrollPane.setBorder(BorderFactory.createLineBorder(accentColor, 1));
 
+        // Layout
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
+        mainPanel.add(subtitleLabel, BorderLayout.BEFORE_FIRST_LINE);
+        mainPanel.add(selectorPanel, BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.SOUTH);
+
+        // Ajuste de layout para que todo quede bien distribuido
         JPanel topPanel = new JPanel(new GridLayout(2, 1));
         topPanel.setBackground(bgColor);
         topPanel.add(titleLabel);
@@ -91,4 +103,3 @@ public class HabitacionM7 extends JFrame {
         setContentPane(mainPanel);
     }
 }
-

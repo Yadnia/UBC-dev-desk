@@ -55,10 +55,10 @@ public class ListadoEstudiantes extends JFrame {
             }
         });
 
-        leftButton.addActionListener(e -> {
-            new BecasAdmin().setVisible(true);
-            dispose();
-        });
+//        leftButton.addActionListener(e -> {
+//            new BecasAdmin().setVisible(true);
+//            dispose();
+//        });
         leftButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(leftButton);

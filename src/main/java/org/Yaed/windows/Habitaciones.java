@@ -4,6 +4,8 @@ import org.Yaed.controller.EstudiantesController;
 import org.Yaed.controller.HabController;
 import org.Yaed.entity.Estudiante;
 import org.Yaed.entity.HabitacionesEstudiantes;
+import org.Yaed.windows.cuartosF.*;
+import org.Yaed.windows.cuartosM.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -127,7 +129,7 @@ public class Habitaciones extends JFrame {
    panelMediano1.setBounds(40, 200, 150, 90);
    panelDown.add(panelMediano1);
     panelMediano1.addActionListener( e ->{
-         new HabitacionM1();
+         new HabitacionF8.HabitacionM1();
     });
 
    JButton panelMediano2 = createRoomButton("Habitación Mediana 2", new Color(50, 90, 160), Color.WHITE);
@@ -342,7 +344,7 @@ public class Habitaciones extends JFrame {
         LocalDate manana = LocalDate.now().plusDays(1);
         for (HabitacionesEstudiantes habEstudiante : habs) {
             if (habEstudiante.getHabitacion().getId() == idCuarto &&
-                    habEstudiante.getFecha().isEqual(hoy)) {
+                    habEstudiante.getFecha().equals("1")) {
 
                 JLabel label = new JLabel(
                         habEstudiante.getEstudiante().getNombre() + " " + habEstudiante.getEstudiante().getApellido()
@@ -362,7 +364,7 @@ public class Habitaciones extends JFrame {
         LocalDate manana = LocalDate.now().plusDays(1);
         for (HabitacionesEstudiantes habEstudiante : habs) {
             if (habEstudiante.getHabitacion().getId() == idCuarto &&
-                    habEstudiante.getFecha().isEqual(manana)) {
+                    habEstudiante.getFecha().equals("1")) {
 
                 JLabel label = new JLabel(
                         habEstudiante.getEstudiante().getNombre() + " " + habEstudiante.getEstudiante().getApellido()

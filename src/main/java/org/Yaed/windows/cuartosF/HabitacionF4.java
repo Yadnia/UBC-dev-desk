@@ -1,13 +1,13 @@
-package org.Yaed.windows;
+package org.Yaed.windows.cuartosF;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class HabitacionM9 extends JFrame {
-    public HabitacionM9() {
-        setTitle("Casa Mediana 9");
+public class HabitacionF4 extends JFrame {
+    public HabitacionF4() {
+        setTitle("Casa Pequeña 4");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
@@ -23,12 +23,12 @@ public class HabitacionM9 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JLabel titleLabel = new JLabel("Casa Mediana 9 (Masculino)");
+        JLabel titleLabel = new JLabel("Casa Pequeña 4 (Femenino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel subtitleLabel = new JLabel("Cuarto 9");
+        JLabel subtitleLabel = new JLabel("Cuarto 1");
         subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         subtitleLabel.setForeground(Color.DARK_GRAY);
         subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,4 +91,3 @@ public class HabitacionM9 extends JFrame {
         setContentPane(mainPanel);
     }
 }
-
