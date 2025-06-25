@@ -2,6 +2,7 @@ package org.Yaed.windows;
 
 import org.Yaed.controller.EstudiantesController;
 import org.Yaed.entity.Estudiante;
+import org.Yaed.entity.TipoEstudiante;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -11,25 +12,24 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-public class ListadoEstudiantes extends JFrame {
+public class CulturaAdmin extends JFrame {
 
-    public ListadoEstudiantes() {
+    public CulturaAdmin() {
         TableRowSorter<DefaultTableModel> sorter;
-        setTitle("SCeBE - Listado Estudiantes");
+        setTitle("SCeBE - Cultura Administrador");
         setSize(1000, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Colores
-        Color leftColor = new Color(10, 20, 60);   // Azul oscuro
-        Color rightColor = new Color(40, 51, 106);  // Rojo vino
+        // ...existing code from BecasAdmin, sin cambios salvo el nombre de la clase y el título...
+        Color leftColor = new Color(10, 20, 60);
+        Color rightColor = new Color(40, 51, 106);
         Color textColor = Color.WHITE;
         Font fuente = new Font("Outfit", Font.BOLD, 15);
         Font fuente1 = new Font("Outfit", Font.BOLD, 14);
         Font font = new Font("Outfit", Font.PLAIN, 10);
 
-        // Panel izquierdo - tamaño fijo
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(leftColor);
         leftPanel.setPreferredSize(new Dimension(180, getHeight()));
@@ -42,10 +42,8 @@ public class ListadoEstudiantes extends JFrame {
         leftButton.setBorderPainted(false);
         leftButton.setFocusPainted(false);
         leftButton.setContentAreaFilled(true);
-
         Color normalBg = leftButton.getBackground();
         Color hoverBg = leftColor.darker();
-
         leftButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 leftButton.setBackground(hoverBg);
@@ -54,161 +52,22 @@ public class ListadoEstudiantes extends JFrame {
                 leftButton.setBackground(normalBg);
             }
         });
-
         leftButton.addActionListener(e -> {
-            new BecasAdmin().setVisible(true);
+            new CulturaAdmin().setVisible(true);
             dispose();
         });
         leftButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(leftButton);
 
-        JButton listadoBttn = new JButton("Listado Estudiantes");
-        listadoBttn.setForeground(textColor);
-        listadoBttn.setBackground(leftColor);
-        listadoBttn.setFont(fuente1);
-        listadoBttn.setBorderPainted(false);
-        listadoBttn.setFocusPainted(false);
-        listadoBttn.setContentAreaFilled(true);
-
-        Color normalBg1 = listadoBttn.getBackground();
-        Color hoverBg1 = leftColor.darker();
-
-        listadoBttn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                listadoBttn.setBackground(hoverBg1);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                listadoBttn.setBackground(normalBg1);
-            }
-        });
-
-        listadoBttn.addActionListener(e -> {
-            new ListadoEstudiantes();
-            dispose();
-        });
-
-        listadoBttn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        leftPanel.add(Box.createVerticalStrut(20));
-        leftPanel.add(listadoBttn);
-
-        JButton botonHabitaciones = new JButton("Organización de Habitaciones");
-        botonHabitaciones.setForeground(textColor);
-        botonHabitaciones.setBackground(leftColor);
-        botonHabitaciones.setFont(fuente1);
-        botonHabitaciones.setBorderPainted(false);
-        botonHabitaciones.setFocusPainted(false);
-        botonHabitaciones.setContentAreaFilled(true);
-        botonHabitaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
-        botonHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonHabitaciones.setBackground(hoverBg1);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonHabitaciones.setBackground(normalBg1);
-            }
-        });
-        botonHabitaciones.addActionListener(e -> {
-            new Habitaciones();
-            dispose();
-        });
-        leftPanel.add(Box.createVerticalStrut(20));
-        leftPanel.add(botonHabitaciones);
-
-        JButton botonActividades = new JButton("Actividades");
-        botonActividades.setForeground(textColor);
-        botonActividades.setBackground(leftColor);
-        botonActividades.setFont(fuente1);
-        botonActividades.setBorderPainted(false);
-        botonActividades.setFocusPainted(false);
-        botonActividades.setContentAreaFilled(true);
-        botonActividades.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Color normalBg2 = botonActividades.getBackground();
-        Color hoverBg2 = leftColor.darker();
-        botonActividades.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonActividades.setBackground(hoverBg2);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonActividades.setBackground(normalBg2);
-            }
-        });
-        leftPanel.add(Box.createVerticalStrut(20));
-        leftPanel.add(botonActividades);
-
-        JButton botonGenerar = new JButton("Generar");
-        botonGenerar.setForeground(textColor);
-        botonGenerar.setBackground(leftColor);
-        botonGenerar.setFont(fuente1);
-        botonGenerar.setBorderPainted(false);
-        botonGenerar.setFocusPainted(false);
-        botonGenerar.setContentAreaFilled(true);
-        botonGenerar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Color normalBg3 = botonGenerar.getBackground();
-        Color hoverBg3 = leftColor.darker();
-        botonGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonGenerar.setBackground(hoverBg3);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonGenerar.setBackground(normalBg3);
-            }
-        });
-        leftPanel.add(Box.createVerticalStrut(20));
-        leftPanel.add(botonGenerar);
-
-        JButton botonOpciones = new JButton("Opciones");
-        botonOpciones.setForeground(textColor);
-        botonOpciones.setBackground(leftColor);
-        botonOpciones.setFont(fuente1);
-        botonOpciones.setBorderPainted(false);
-        botonOpciones.setFocusPainted(false);
-        botonOpciones.setContentAreaFilled(true);
-        botonOpciones.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Color normalBg4 = botonOpciones.getBackground();
-        Color hoverBg4 = leftColor.darker();
-        botonOpciones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonOpciones.setBackground(hoverBg4);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonOpciones.setBackground(normalBg4);
-            }
-        });
-        leftPanel.add(Box.createVerticalStrut(20));
-        leftPanel.add(botonOpciones);
-
-        JButton botonAyuda = new JButton("Ayuda");
-        botonAyuda.setForeground(textColor);
-        botonAyuda.setBackground(leftColor);
-        botonAyuda.setFont(fuente1);
-        botonAyuda.setBorderPainted(false);
-        botonAyuda.setFocusPainted(false);
-        botonAyuda.setContentAreaFilled(true);
-        botonAyuda.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Color normalBg5 = botonAyuda.getBackground();
-        Color hoverBg5 = leftColor.darker();
-        botonAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonAyuda.setBackground(hoverBg5);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonAyuda.setBackground(normalBg5);
-            }
-        });
-        leftPanel.add(Box.createVerticalStrut(20));
-        leftPanel.add(botonAyuda);
-
-
-        // Panel derecho - ocupa el resto del espacio
+        // ...existing code for rightPanel, panelUp, panelDown, tabla, etc...
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(rightColor);
         rightPanel.setLayout(new BorderLayout());
 
-// Panel superior (header pequeño)
         JPanel panelUp = new JPanel();
         panelUp.setBackground(rightColor);
-        panelUp.setPreferredSize(new Dimension(0, 60)); // Altura fija para header
+        panelUp.setPreferredSize(new Dimension(0, 60));
         panelUp.setLayout(new FlowLayout(FlowLayout.LEFT));
         rightPanel.add(panelUp, BorderLayout.NORTH);
         JTextField searchField = new JTextField(20);
@@ -216,17 +75,16 @@ public class ListadoEstudiantes extends JFrame {
         searchField.setFont(new Font("SansSerif", Font.PLAIN, 14));
         searchField.setForeground(Color.WHITE);
 
-        Color bgColor = new Color(14, 34, 71); // Color de fondo
+        Color bgColor = new Color(14, 34, 71);
         searchField.setBackground(bgColor);
         searchField.setCaretColor(Color.WHITE);
 
-// Borde del mismo color y redondeado
         searchField.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(bgColor, 1, true), // mismo color que el fondo, redondeado
+                BorderFactory.createLineBorder(bgColor, 1, true),
                 BorderFactory.createEmptyBorder(5, 8, 5, 8)
         ));
 
-        JButton searchButton = new JButton("Buscar"); // temporal
+        JButton searchButton = new JButton("Buscar");
         searchButton.setPreferredSize(new Dimension(100, 30));
         searchButton.setBackground(new Color(60, 80, 140));
         searchButton.setForeground(Color.WHITE);
@@ -251,11 +109,9 @@ public class ListadoEstudiantes extends JFrame {
         popupMenu.add(item1);
         popupMenu.add(item2);
         popupMenu.add(item3);
-// Acción al hacer clic en el botón
         menuButton.addActionListener(e -> {
             popupMenu.show(menuButton, 0, menuButton.getHeight());
         });
-
 
         JButton addButton = new JButton("Agregar");
         addButton.setPreferredSize(new Dimension(100, 30));
@@ -274,24 +130,30 @@ public class ListadoEstudiantes extends JFrame {
         editButton.setForeground(Color.WHITE);
         editButton.setFocusPainted(false);
         editButton.setBorderPainted(false);
-// Agregar al panel
+
+        JButton deleteButton = new JButton("Eliminar");
+        deleteButton.setPreferredSize(new Dimension(100, 30));
+        deleteButton.setBackground(new Color(60, 80, 140));
+        deleteButton.setForeground(Color.WHITE);
+        deleteButton.setFocusPainted(false);
+        deleteButton.setBorderPainted(false);
+
         panelUp.add(searchField);
         panelUp.add(searchButton);
         panelUp.add(menuButton);
         panelUp.add(addButton);
         panelUp.add(editButton);
+        panelUp.add(deleteButton);
 
-        // Panel inferior (ocupa todo el espacio restante)
         JPanel panelDown = new JPanel();
         panelDown.setBackground(rightColor);
-        panelDown.setLayout(new BorderLayout()); // 20px horizontal, 10px vertical
+        panelDown.setLayout(new BorderLayout());
 
         rightPanel.add(panelDown, BorderLayout.CENTER);
 
         JPanel panel1 = new JPanel(new BorderLayout());
         panel1.setBackground(leftColor);
 
-        //tabla
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Genero");
@@ -299,7 +161,7 @@ public class ListadoEstudiantes extends JFrame {
         model.addColumn("Carnet");
         model.addColumn("Etnia");
 
-       JTable tablaEstudiantes = new JTable(model);
+        JTable tablaEstudiantes = new JTable(model);
         tablaEstudiantes.setBackground(leftColor);
         tablaEstudiantes.setForeground(Color.WHITE);
         tablaEstudiantes.setFont(font);
@@ -320,9 +182,8 @@ public class ListadoEstudiantes extends JFrame {
             }
         });
 
-
         JScrollPane scrollPane = new JScrollPane(tablaEstudiantes);
-        scrollPane.getViewport().setBackground(leftColor); // Color de fondo del área visible
+        scrollPane.getViewport().setBackground(leftColor);
         scrollPane.setBackground(leftColor);
         scrollPane.setPreferredSize(new Dimension(750, 600));
         panel1.setBackground(leftColor);
@@ -337,70 +198,43 @@ public class ListadoEstudiantes extends JFrame {
             addRetiredRows(model);
         });
         item3.addActionListener(e -> {
-          addEgressedRows(model);
+            addEgressedRows(model);
         });
         searchButton.addActionListener(e ->{
             addRows(model);
         });
 
-//        deleteButton.addActionListener(e -> {
-//            int filaSeleccionada = tablaEstudiantes.getSelectedRow();
-//
-//            if (filaSeleccionada == -1) {
-//                JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-//                return;
-//            }
-//
-//            int totalColumnas = tablaEstudiantes.getColumnCount();
-//            String carnet = tablaEstudiantes.getValueAt(filaSeleccionada, totalColumnas - 2).toString();
-//
-//            // Buscar al estudiante por carnet
-//            List<Estudiante> estudiantes = EstudiantesController.getEstudiantes();
-//            Estudiante estudianteAEliminar = null;
-//
-//            for (Estudiante estudiante : estudiantes) {
-//                if (estudiante.getCarnet().equalsIgnoreCase(carnet)) {
-//                    estudianteAEliminar = estudiante;
-//                    break;
-//                }
-//            }
-//
-//            if (estudianteAEliminar != null) {
-//                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar al estudiante con carnet: " + carnet + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-//                if (confirmacion == JOptionPane.YES_OPTION) {
-//                    EstudiantesController.deleteEstudiante(estudianteAEliminar);
-//                    JOptionPane.showMessageDialog(null, "Estudiante eliminado exitosamente.");
-//                    // Actualiza la tabla si es necesario
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Estudiante no encontrado en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
-//            }
-//        });
-
-
-// Agregar los paneles principales al frame
-        editButton.addActionListener(e -> {
+        deleteButton.addActionListener(e -> {
             int filaSeleccionada = tablaEstudiantes.getSelectedRow();
-            if (filaSeleccionada != -1) {
-                String carnet = tablaEstudiantes.getValueAt(filaSeleccionada, 3).toString();
-                List<Estudiante> estudiantes = EstudiantesController.getEstudiantes();
-                Estudiante estudianteSeleccionado = null;
-                for (Estudiante estudiante : estudiantes) {
-                    if (estudiante.getCarnet().equalsIgnoreCase(carnet)) {
-                        estudianteSeleccionado = estudiante;
-                        break;
-                    }
+
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int totalColumnas = tablaEstudiantes.getColumnCount();
+            String carnet = tablaEstudiantes.getValueAt(filaSeleccionada, totalColumnas - 2).toString();
+
+            List<Estudiante> estudiantes = EstudiantesController.getEstudiantes();
+            Estudiante estudianteAEliminar = null;
+
+            for (Estudiante estudiante : estudiantes) {
+                if (estudiante.getCarnet().equalsIgnoreCase(carnet)) {
+                    estudianteAEliminar = estudiante;
+                    break;
                 }
-                if (estudianteSeleccionado != null) {
-                    new EditarEstudiante(estudianteSeleccionado).setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró el estudiante.");
+            }
+
+            if (estudianteAEliminar != null) {
+                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar al estudiante con carnet: " + carnet + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    EstudiantesController.deleteEstudiante(estudianteAEliminar);
+                    JOptionPane.showMessageDialog(null, "Estudiante eliminado exitosamente.");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Seleccione un estudiante para editar.");
+                JOptionPane.showMessageDialog(null, "Estudiante no encontrado en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
-
 
         add(leftPanel, BorderLayout.WEST);
         add(rightPanel, BorderLayout.CENTER);
@@ -410,6 +244,10 @@ public class ListadoEstudiantes extends JFrame {
         model.setRowCount(0);
         List<Estudiante> estudianteList = EstudiantesController.getEstudiantes();
         for (Estudiante estudiante : estudianteList) {
+            TipoEstudiante tipoEstudiante = estudiante.getTipoEstudiante();
+            if (tipoEstudiante.getIdTipoEstudiante() != 1) { // Excluir estudiantes de tipo "Becado"
+                continue;
+            }
            String nombre = estudiante.getNombre();
            char genero   = estudiante.getSexo();
            String apellido = estudiante.getApellido();
@@ -463,4 +301,4 @@ public class ListadoEstudiantes extends JFrame {
             }
         }
     }
-    }
+}
