@@ -9,6 +9,7 @@ public class BecasInicio extends JFrame {
         setSize(1000, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setLayout(new BorderLayout());
 
         // Colores

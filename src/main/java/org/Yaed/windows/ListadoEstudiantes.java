@@ -39,14 +39,13 @@ public class ListadoEstudiantes extends JFrame {
         leftButton.setForeground(textColor);
         leftButton.setBackground(leftColor);
         leftButton.setFont(fuente);
-// Estilo sin bordes ni marco
         leftButton.setBorderPainted(false);
         leftButton.setFocusPainted(false);
         leftButton.setContentAreaFilled(true);
-// Guardar el color original
+
         Color normalBg = leftButton.getBackground();
-        Color hoverBg = leftColor.darker(); // Fondo más oscuro
-// Efecto hover en fondo
+        Color hoverBg = leftColor.darker();
+
         leftButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 leftButton.setBackground(hoverBg);
@@ -55,7 +54,7 @@ public class ListadoEstudiantes extends JFrame {
                 leftButton.setBackground(normalBg);
             }
         });
-// Acción al hacer clic
+
         leftButton.addActionListener(e -> {
             new BecasAdmin().setVisible(true);
             dispose();
@@ -68,16 +67,13 @@ public class ListadoEstudiantes extends JFrame {
         listadoBttn.setForeground(textColor);
         listadoBttn.setBackground(leftColor);
         listadoBttn.setFont(fuente1);
-
-// Estilo sin bordes ni marco
         listadoBttn.setBorderPainted(false);
         listadoBttn.setFocusPainted(false);
         listadoBttn.setContentAreaFilled(true);
-// Guardar el color original
-        Color normalBg1 = listadoBttn.getBackground();
-        Color hoverBg1 = leftColor.darker(); // Fondo más oscuro
 
-// Efecto hover en fondo
+        Color normalBg1 = listadoBttn.getBackground();
+        Color hoverBg1 = leftColor.darker();
+
         listadoBttn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 listadoBttn.setBackground(hoverBg1);
@@ -87,7 +83,6 @@ public class ListadoEstudiantes extends JFrame {
             }
         });
 
-// Acción al hacer clic
         listadoBttn.addActionListener(e -> {
             new ListadoEstudiantes();
             dispose();
@@ -97,46 +92,112 @@ public class ListadoEstudiantes extends JFrame {
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(listadoBttn);
 
-        String[] botones = {
-                "Organización de Habitaciones",
-                "Actividades",
-                "Generar",
-                "Opciones",
-                "Ayuda"
-        };
+        JButton botonHabitaciones = new JButton("Organización de Habitaciones");
+        botonHabitaciones.setForeground(textColor);
+        botonHabitaciones.setBackground(leftColor);
+        botonHabitaciones.setFont(fuente1);
+        botonHabitaciones.setBorderPainted(false);
+        botonHabitaciones.setFocusPainted(false);
+        botonHabitaciones.setContentAreaFilled(true);
+        botonHabitaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonHabitaciones.setBackground(hoverBg1);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonHabitaciones.setBackground(normalBg1);
+            }
+        });
+        botonHabitaciones.addActionListener(e -> {
+            new Habitaciones();
+            dispose();
+        });
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonHabitaciones);
 
-        for (String texto : botones) {
-            JButton boton = new JButton(texto);
-            boton.setForeground(textColor);
-            boton.setBackground(leftColor);
-            boton.setFont(fuente1);
+        JButton botonActividades = new JButton("Actividades");
+        botonActividades.setForeground(textColor);
+        botonActividades.setBackground(leftColor);
+        botonActividades.setFont(fuente1);
+        botonActividades.setBorderPainted(false);
+        botonActividades.setFocusPainted(false);
+        botonActividades.setContentAreaFilled(true);
+        botonActividades.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Color normalBg2 = botonActividades.getBackground();
+        Color hoverBg2 = leftColor.darker();
+        botonActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonActividades.setBackground(hoverBg2);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonActividades.setBackground(normalBg2);
+            }
+        });
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonActividades);
 
-            // Estilo moderno
-            boton.setBorderPainted(false);
-            boton.setFocusPainted(false);
-            boton.setContentAreaFilled(true);
+        JButton botonGenerar = new JButton("Generar");
+        botonGenerar.setForeground(textColor);
+        botonGenerar.setBackground(leftColor);
+        botonGenerar.setFont(fuente1);
+        botonGenerar.setBorderPainted(false);
+        botonGenerar.setFocusPainted(false);
+        botonGenerar.setContentAreaFilled(true);
+        botonGenerar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Color normalBg3 = botonGenerar.getBackground();
+        Color hoverBg3 = leftColor.darker();
+        botonGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonGenerar.setBackground(hoverBg3);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonGenerar.setBackground(normalBg3);
+            }
+        });
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonGenerar);
 
-            // Hover
-            Color normalBg2 = boton.getBackground();
-            Color hoverBg2 = leftColor.darker();
-            boton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    boton.setBackground(hoverBg2);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    boton.setBackground(normalBg2);
-                }
-            });
+        JButton botonOpciones = new JButton("Opciones");
+        botonOpciones.setForeground(textColor);
+        botonOpciones.setBackground(leftColor);
+        botonOpciones.setFont(fuente1);
+        botonOpciones.setBorderPainted(false);
+        botonOpciones.setFocusPainted(false);
+        botonOpciones.setContentAreaFilled(true);
+        botonOpciones.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Color normalBg4 = botonOpciones.getBackground();
+        Color hoverBg4 = leftColor.darker();
+        botonOpciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonOpciones.setBackground(hoverBg4);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonOpciones.setBackground(normalBg4);
+            }
+        });
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonOpciones);
 
-            // Acción al hacer clic (puedes agregar funcionalidad aquí)
-            boton.addActionListener(e -> {
-                System.out.println("Clic en: " + texto);
-            });
-
-            boton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            leftPanel.add(Box.createVerticalStrut(20));
-            leftPanel.add(boton);
-        }
+        JButton botonAyuda = new JButton("Ayuda");
+        botonAyuda.setForeground(textColor);
+        botonAyuda.setBackground(leftColor);
+        botonAyuda.setFont(fuente1);
+        botonAyuda.setBorderPainted(false);
+        botonAyuda.setFocusPainted(false);
+        botonAyuda.setContentAreaFilled(true);
+        botonAyuda.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Color normalBg5 = botonAyuda.getBackground();
+        Color hoverBg5 = leftColor.darker();
+        botonAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonAyuda.setBackground(hoverBg5);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonAyuda.setBackground(normalBg5);
+            }
+        });
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonAyuda);
 
 
         // Panel derecho - ocupa el resto del espacio

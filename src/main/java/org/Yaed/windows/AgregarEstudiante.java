@@ -44,19 +44,71 @@ public class AgregarEstudiante extends JFrame {
         // Campo: Carnet
         lblCarnet = crearLabel("Carnet:", 0, 0, fuente, colorTexto, gbc);
         txtCarnet = crearTextField(1, 0, gbc);
+        // Solo números y guiones en carnet
+        txtCarnet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c) && c != '-' && c != '\b') {
+                    evt.consume();
+                }
+            }
+        });
 
         // Campo: Cédula
         lblCedula = crearLabel("Cédula:", 0, 1, fuente, colorTexto, gbc);
         txtCedula = crearTextField(1, 1, gbc);
+        // Solo números, pero permite una letra al final
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                String texto = txtCedula.getText();
+                char c = evt.getKeyChar();
+                // Permitir dígitos en cualquier posición
+                if (Character.isDigit(c) || c == '\b') {
+                    return;
+                }
+                // Permitir una sola letra al final
+                if (Character.isLetter(c) && texto.chars().noneMatch(Character::isLetter) && txtCedula.getCaretPosition() == texto.length()) {
+                    return;
+                }
+                evt.consume();
+            }
+        });
 
         lblNombres = crearLabel("Nombres:", 0, 2, fuente, colorTexto, gbc);
         txtNombres = crearTextField(1, 2, gbc);
+        // Solo letras y espacios en nombres
+        txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!Character.isLetter(c) && c != ' ' && c != '\b') {
+                    evt.consume();
+                }
+            }
+        });
 
         lblApellidos = crearLabel("Apellidos:", 0, 3, fuente, colorTexto, gbc);
         txtApellidos = crearTextField(1, 3, gbc);
+        // Solo letras y espacios en apellidos
+        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!Character.isLetter(c) && c != ' ' && c != '\b') {
+                    evt.consume();
+                }
+            }
+        });
 
         lblCelular = crearLabel("Celular (xxxx-xxxx):", 0, 4, fuente, colorTexto, gbc);
         txtCelular = crearTextField(1, 4, gbc);
+        // Solo números en celular
+        txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c) && c != '\b') {
+                    evt.consume();
+                }
+            }
+        });
 
         // Etnia
         lblEtnia = crearLabel("Etnia:", 0, 5, fuente, colorTexto, gbc);

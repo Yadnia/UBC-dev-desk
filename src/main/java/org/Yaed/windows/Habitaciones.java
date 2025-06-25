@@ -1,7 +1,16 @@
 package org.Yaed.windows;
 
+import org.Yaed.controller.EstudiantesController;
+import org.Yaed.controller.HabController;
+import org.Yaed.entity.Estudiante;
+import org.Yaed.entity.HabitacionesEstudiantes;
+
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Habitaciones extends JFrame {
     public Habitaciones() {
@@ -17,44 +26,51 @@ public class Habitaciones extends JFrame {
         Color textColor = Color.WHITE;
         Font fuente = new Font("Outfit", Font.BOLD, 15);
 
-        // Panel izquierdo (solo botón UBC)
+        // Panel izquierdo
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(leftColor);
         leftPanel.setPreferredSize(new Dimension(180, getHeight()));
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 
-        JButton leftButton = new JButton("UBC");
-        leftButton.setForeground(textColor);
-        leftButton.setBackground(leftColor);
-        leftButton.setFont(fuente);
-        leftButton.setBorderPainted(false);
-        leftButton.setFocusPainted(false);
-        leftButton.setContentAreaFilled(true);
-
-        Color normalBg = leftButton.getBackground();
-        Color hoverBg = leftColor.darker();
-
-        leftButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                leftButton.setBackground(hoverBg);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                leftButton.setBackground(normalBg);
-            }
+        // Botones del panel izquierdo
+        JButton leftButton = createButton("UBC", leftColor, textColor, fuente);
+        JButton listadoBttn = createButton("Listado Estudiantes", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
+        listadoBttn.addActionListener(e -> {
+            new ListadoEstudiantes();
+            dispose();
         });
+        JButton botonHabitaciones = createButton("Organización de Habitaciones", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
+        botonHabitaciones.addActionListener(e -> {
+            new Habitaciones();
+            dispose();
+        });
+        JButton botonActividades = createButton("Actividades", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
+        JButton botonGenerar = createButton("Generar", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
+        JButton botonOpciones = createButton("Opciones", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
+        JButton botonAyuda = createButton("Ayuda", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
 
-        leftButton.addActionListener(e -> {});
-        leftButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Agregar botones al panel izquierdo
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(leftButton);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(listadoBttn);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonHabitaciones);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonActividades);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonGenerar);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonOpciones);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(botonAyuda);
 
         // Panel derecho
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(rightColor);
         rightPanel.setLayout(new BorderLayout());
 
-        // Panel superior (búsqueda)
+        // Panel superior
         JPanel panelUp = new JPanel();
         panelUp.setBackground(rightColor);
         panelUp.setPreferredSize(new Dimension(0, 70));
@@ -90,64 +106,339 @@ public class Habitaciones extends JFrame {
         panelDown.setLayout(null);
         rightPanel.add(panelDown, BorderLayout.CENTER);
 
-        // Cuadros grandes
-        for (int i = 0; i < 2; i++) {
-            JPanel panelGrande = new JPanel();
-            panelGrande.setBackground(new Color(30, 60, 120));
-            panelGrande.setBounds(50 + i * 500, 30, 420, 150);
-            panelGrande.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-            JLabel label = new JLabel("Habitación Grande " + (i + 1));
-            label.setForeground(Color.WHITE);
-            label.setFont(new Font("Outfit", Font.BOLD, 18));
-            panelGrande.add(label);
-            panelDown.add(panelGrande);
-        }
+        // Crear botones para habitaciones grandes
+        JButton panelGrande1 = createRoomButton("Habitación Grande 1", new Color(30, 60, 120), Color.WHITE);
+        panelGrande1.setBounds(50, 30, 420, 150);
+        panelDown.add(panelGrande1);
 
-        // Cuadros medianos
-        for (int i = 0; i < 10; i++) {
-            JPanel panelMediano = new JPanel();
-            panelMediano.setBackground(new Color(50, 90, 160));
-            int x = 40 + (i % 5) * 200;
-            int y = 200 + (i / 5) * 110;
-            panelMediano.setBounds(x, y, 180, 90);
-            panelMediano.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-            JLabel label = new JLabel("Mediana " + (i + 1));
-            label.setForeground(Color.WHITE);
-            label.setFont(new Font("Outfit", Font.BOLD, 13));
-            panelMediano.add(label);
-            panelDown.add(panelMediano);
-        }
+        panelGrande1.addActionListener( e ->{
+            new HabitacionG1();
+        });
 
-        // Cuadros pequeños: todos en una sola fila de 8
-        int cantidad = 8;
-        int anchoPequeno = 100;
-        int altoPequeno = 220;
-        int espacioX = 20;
-        int inicioX = 30;
-        int inicioY = 460; // una sola fila
+        JButton panelGrande2 = createRoomButton("Habitación Grande 2", new Color(30, 60, 120), Color.WHITE);
+        panelGrande2.setBounds(500, 30, 420, 150);
+        panelDown.add(panelGrande2);
 
-        for (int i = 0; i < cantidad; i++) {
-            JPanel panelPequeno = new JPanel();
-            panelPequeno.setBackground(new Color(80, 120, 180));
-            panelPequeno.setLayout(new GridLayout(12, 1, 0, 2)); // 12 filas
+   // Crear botones para habitaciones medianas
+  JButton panelMediano1 = createRoomButton("Habitación Mediana 1", new Color(50, 90, 160), Color.WHITE);
+   panelMediano1.setBounds(40, 200, 150, 90);
+   panelDown.add(panelMediano1);
 
-            int x = inicioX + i * (anchoPequeno + espacioX);
-            int y = inicioY;
-            panelPequeno.setBounds(x, y, anchoPequeno, altoPequeno);
-            panelPequeno.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+   JButton panelMediano2 = createRoomButton("Habitación Mediana 2", new Color(50, 90, 160), Color.WHITE);
+   panelMediano2.setBounds(210, 200, 150, 90);
+   panelDown.add(panelMediano2);
 
-            // Agregar 12 labels
-            for (int j = 0; j < 12; j++) {
-                JLabel label = new JLabel("Est " + (j + 1), SwingConstants.CENTER);
-                label.setFont(new Font("Outfit", Font.PLAIN, 11));
-                label.setForeground(Color.WHITE);
-                panelPequeno.add(label);
-            }
+   JButton panelMediano3 = createRoomButton("Habitación Mediana 3", new Color(50, 90, 160), Color.WHITE);
+   panelMediano3.setBounds(380, 200, 150, 90);
+   panelDown.add(panelMediano3);
 
-            panelDown.add(panelPequeno);
-        }
+   JButton panelMediano4 = createRoomButton("Habitación Mediana 4", new Color(50, 90, 160), Color.WHITE);
+   panelMediano4.setBounds(550, 200, 150, 90);
+   panelDown.add(panelMediano4);
+
+   JButton panelMediano5 = createRoomButton("Habitación Mediana 5", new Color(50, 90, 160), Color.WHITE);
+   panelMediano5.setBounds(720, 200, 150, 90);
+   panelDown.add(panelMediano5);
+
+   JButton panelMediano6 = createRoomButton("Habitación Mediana 6", new Color(50, 90, 160), Color.WHITE);
+   panelMediano6.setBounds(40, 320, 150, 90);
+   panelDown.add(panelMediano6);
+
+   JButton panelMediano7 = createRoomButton("Habitación Mediana 7", new Color(50, 90, 160), Color.WHITE);
+   panelMediano7.setBounds(210, 320, 150, 90);
+   panelDown.add(panelMediano7);
+
+   JButton panelMediano8 = createRoomButton("Habitación Mediana 8", new Color(50, 90, 160), Color.WHITE);
+   panelMediano8.setBounds(380, 320, 150, 90);
+   panelDown.add(panelMediano8);
+
+   JButton panelMediano9 = createRoomButton("Habitación Mediana 9", new Color(50, 90, 160), Color.WHITE);
+   panelMediano9.setBounds(550, 320, 150, 90);
+   panelDown.add(panelMediano9);
+
+   JButton panelMediano10 = createRoomButton("Habitación Mediana 10", new Color(50, 90, 160), Color.WHITE);
+   panelMediano10.setBounds(720, 320, 150, 90);
+   panelDown.add(panelMediano10);
+
+        // Crear botones para habitaciones pequeñas
+      JButton panelPequeno1 = createRoomButton("Habitación Pequeña 1", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno1.setBounds(30, 460, 100, 100);
+        panelDown.add(panelPequeno1);
+
+        JButton panelPequeno2 = createRoomButton("Habitación Pequeña 2", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno2.setBounds(150, 460, 100, 100);
+        panelDown.add(panelPequeno2);
+
+        JButton panelPequeno3 = createRoomButton("Habitación Pequeña 3", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno3.setBounds(270, 460, 100, 100);
+        panelDown.add(panelPequeno3);
+
+        JButton panelPequeno4 = createRoomButton("Habitación Pequeña 4", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno4.setBounds(390, 460, 100, 100);
+        panelDown.add(panelPequeno4);
+
+        JButton panelPequeno5 = createRoomButton("Habitación Pequeña 5", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno5.setBounds(510, 460, 100, 100);
+        panelDown.add(panelPequeno5);
+
+        JButton panelPequeno6 = createRoomButton("Habitación Pequeña 6", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno6.setBounds(630, 460, 100, 100);
+        panelDown.add(panelPequeno6);
+
+        JButton panelPequeno7 = createRoomButton("Habitación Pequeña 7", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno7.setBounds(750, 460, 100, 100);
+        panelDown.add(panelPequeno7);
+
+        JButton panelPequeno8 = createRoomButton("Habitación Pequeña 8", new Color(80, 120, 180), Color.WHITE);
+        panelPequeno8.setBounds(870, 460, 100, 100);
+        panelDown.add(panelPequeno8);
+
+        // Agregamos paneles al frame
         add(leftPanel, BorderLayout.WEST);
         add(rightPanel, BorderLayout.CENTER);
         setVisible(true);
     }
+
+    // Método para crear botones
+    private JButton createButton(String text, Color bgColor, Color fgColor, Font font) {
+        JButton button = new JButton(text);
+        button.setForeground(fgColor);
+        button.setBackground(bgColor);
+        button.setFont(font);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        button.setContentAreaFilled(true);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return button;
+    }
+
+    // Método para crear botones de habitaciones
+    private JButton createRoomButton(String text, Color bgColor, Color fgColor) {
+        JButton button = new JButton(text);
+        button.setForeground(fgColor);
+        button.setBackground(bgColor);
+        button.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+        button.setLayout(new GridLayout(6, 1, 0, 2));
+        return button;
+    }
+
+
+    private static void llenarPaneles(JPanel panelPequeno1, JPanel panelPequeno2, JPanel panelPequeno3, JPanel panelPequeno4, JPanel panelPequeno5, JPanel panelPequeno6, JPanel panelPequeno7, JPanel panelPequeno8, JPanel panelGrande1, JPanel panelGrande2, JPanel panelMediano1, JPanel panelMediano2, JPanel panelMediano3, JPanel panelMediano4, JPanel panelMediano5, JPanel panelMediano6, JPanel panelMediano7) {
+        llenarPanel(panelPequeno1, 1);
+        llenarPanel(panelPequeno2, 2);
+        llenarPanel(panelPequeno3, 3);
+        llenarPanel(panelPequeno4, 4);
+        llenarPanel(panelPequeno5, 5);
+        llenarPanel(panelPequeno6, 6);
+        llenarPanel(panelPequeno7, 7);
+        llenarPanel(panelPequeno8, 8);
+//        llenarPanel(panelMediano1, 9);
+//        llenarPanel(panelMediano2, 10);
+//        llenarPanel(panelMediano3, 11);
+//        llenarPanel(panelMediano4, 12);
+//        llenarPanel(panelMediano5, 13);
+//        llenarPanel(panelMediano6, 14);
+//        llenarPanel(panelMediano7, 15);
+//        llenarPanel(panelGrande1, 16);
+//        llenarPanel(panelGrande2, 17);
+
+    }
+    private static void llenarPaneles2(JPanel panelMediano1, JPanel panelMediano2, JPanel panelMediano3, JPanel panelMediano4, JPanel panelMediano5, JPanel panelMediano6, JPanel panelMediano7, JPanel panelGrande1, JPanel panelGrande2) {
+        llenarPanel2(panelMediano1, 1);
+        llenarPanel2(panelMediano2, 10);
+        llenarPanel2(panelMediano3, 11);
+        llenarPanel2(panelMediano4, 12);
+        llenarPanel2(panelMediano5, 13);
+        llenarPanel2(panelMediano6, 14);
+        llenarPanel2(panelMediano7, 15);
+        llenarPanel2(panelGrande1, 16);
+        llenarPanel2(panelGrande2, 17);
+    }
+    private void asignarAlPanel(JPanel panel, List<Estudiante> estudiantes) {
+        // Elimina todas las etiquetas de estudiantes excepto el título (que está en índice 0)
+        while (panel.getComponentCount() > 1) {
+            panel.remove(1);
+        }
+        panel.setLayout(new GridLayout(estudiantes.size() + 1, 1)); // +1 para título
+        for (Estudiante e : estudiantes) {
+            JLabel label = new JLabel(e.getNombre() + " " + e.getApellido());
+            label.setHorizontalAlignment(SwingConstants.CENTER);
+            label.setForeground(Color.WHITE);
+            panel.add(label);
+        }
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    public List<Estudiante> getEstudiantesPorSexo(char sexo) {
+        return EstudiantesController.getEstudiantes().stream()
+                .filter(e -> e.getSexo() == sexo)
+                .toList();
+    }
+    public List<Estudiante> mujeres = getEstudiantesPorSexo('F');
+    public List<Estudiante> hombres = getEstudiantesPorSexo('M');
+
+
+    public static void llenarPanel(JPanel panel, int idCuarto) {
+        panel.setLayout(new GridLayout(12, 1, 0, 2)); // para 12 filas
+        List<HabitacionesEstudiantes> habs = HabController.getHabitacionesEstudiantes();
+        LocalDate hoy = LocalDate.now(); // fecha actual
+        LocalDate manana = LocalDate.now().plusDays(1);
+        for (HabitacionesEstudiantes habEstudiante : habs) {
+            if (habEstudiante.getHabitacion().getId() == idCuarto &&
+                    habEstudiante.getFecha().isEqual(hoy)) {
+
+                JLabel label = new JLabel(
+                        habEstudiante.getEstudiante().getNombre() + " " + habEstudiante.getEstudiante().getApellido()
+                );
+                label.setForeground(Color.WHITE);
+                panel.add(label);
+            }
+        }
+
+        panel.revalidate();
+        panel.repaint();
+    }
+    public static void llenarPanel2(JPanel panel, int idCuarto) {
+        panel.setLayout(new GridLayout(12, 1, 0, 2)); // para 12 filas
+        List<HabitacionesEstudiantes> habs = HabController.getHabitacionesEstudiantes();
+        LocalDate hoy = LocalDate.now(); // fecha actual
+        LocalDate manana = LocalDate.now().plusDays(1);
+        for (HabitacionesEstudiantes habEstudiante : habs) {
+            if (habEstudiante.getHabitacion().getId() == idCuarto &&
+                    habEstudiante.getFecha().isEqual(manana)) {
+
+                JLabel label = new JLabel(
+                        habEstudiante.getEstudiante().getNombre() + " " + habEstudiante.getEstudiante().getApellido()
+                );
+                label.setForeground(Color.WHITE);
+                label.setFont(new Font("Outfit", Font.BOLD, 9));
+                panel.add(label);
+            }
+        }
+
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    public static void dividirEstudiantesFBeca2(List<Estudiante> todos,
+                                                List<Estudiante> grupo1,
+                                                List<Estudiante> grupo2,
+                                                List<Estudiante> grupo3,
+                                                List<Estudiante> grupo4,
+                                                List<Estudiante> grupo5,
+                                                List<Estudiante> grupo6,
+                                                List<Estudiante> grupo7,
+                                                List<Estudiante> grupo8) {
+        // Limpiar listas
+        grupo1.clear(); grupo2.clear(); grupo3.clear(); grupo4.clear();
+        grupo5.clear(); grupo6.clear(); grupo7.clear(); grupo8.clear();
+
+        // Filtrar estudiantes mujeres con beca ID 2
+        List<Estudiante> filtradas = new ArrayList<>();
+        for (Estudiante e : todos) {
+            if (Character.toUpperCase(e.getSexo()) == 'F' && e.getBecaid() != null && e.getBecaid().getId() == 2) {
+                filtradas.add(e);
+            }
+        }
+
+        // Mezclar aleatoriamente
+        Collections.shuffle(filtradas);
+
+        // Dividir en grupos de 12 estudiantes máximo
+        for (int i = 0; i < filtradas.size(); i++) {
+            Estudiante estudiante = filtradas.get(i);
+            int grupo = i / 12;
+            switch (grupo) {
+                case 0 -> grupo1.add(estudiante);
+                case 1 -> grupo2.add(estudiante);
+                case 2 -> grupo3.add(estudiante);
+                case 3 -> grupo4.add(estudiante);
+                case 4 -> grupo5.add(estudiante);
+                case 5 -> grupo6.add(estudiante);
+                case 6 -> grupo7.add(estudiante);
+                case 7 -> grupo8.add(estudiante);
+                default -> {}
+            }
+        }
+    }
+    public static void dividirEstudiantesM1Beca2(List<Estudiante> todos,
+                                                 List<Estudiante> grupo1,
+                                                 List<Estudiante> grupo2
+    ) {
+        // Limpiar listas
+        grupo1.clear(); grupo2.clear();
+
+        // Filtrar estudiantes mujeres con beca ID 2
+        List<Estudiante> filtradas = new ArrayList<>();
+        for (Estudiante e : todos) {
+            if (Character.toUpperCase(e.getSexo()) == 'F' && e.getBecaid() != null && e.getBecaid().getId() == 2) {
+                filtradas.add(e);
+            }
+        }
+
+        // Mezclar aleatoriamente
+        Collections.shuffle(filtradas);
+
+        // Dividir en grupos de 12 estudiantes máximo
+        for (int i = 0; i < filtradas.size(); i++) {
+            Estudiante estudiante = filtradas.get(i);
+            int grupo = i / 8;
+            switch (grupo) {
+                case 0 -> grupo1.add(estudiante);
+                case 1 -> grupo2.add(estudiante);
+                default -> {}
+            }
+        }
+    }
+    public static void dividirEstudiantesM2Beca2(List<Estudiante> todos,
+                                                 List<Estudiante> grupo1,
+                                                 List<Estudiante> grupo2,
+                                                 List<Estudiante> grupo3,
+                                                 List<Estudiante> grupo4,
+                                                 List<Estudiante> grupo5,
+                                                 List<Estudiante> grupo6
+    ) {
+        // Limpiar listas
+        grupo1.clear(); grupo2.clear();
+
+        // Filtrar estudiantes mujeres con beca ID 2
+        List<Estudiante> filtradas = new ArrayList<>();
+        for (Estudiante e : todos) {
+            if (Character.toUpperCase(e.getSexo()) == 'F' && e.getBecaid() != null && e.getBecaid().getId() == 2) {
+                filtradas.add(e);
+            }
+        }
+
+        // Mezclar aleatoriamente
+        Collections.shuffle(filtradas);
+
+        // Dividir en grupos de 12 estudiantes máximo
+        for (int i = 0; i < filtradas.size(); i++) {
+            Estudiante estudiante = filtradas.get(i);
+            int grupo = i / 10;
+            switch (grupo) {
+                case 0 -> grupo1.add(estudiante);
+                case 1 -> grupo2.add(estudiante);
+                case 2 -> grupo3.add(estudiante);
+                case 3 -> grupo4.add(estudiante);
+                case 4 -> grupo5.add(estudiante);
+                case 5 -> grupo6.add(estudiante);
+                default -> {}
+            }
+        }
+    }
+    private JButton crearBotonHabitacion(String texto, int x, int y, int ancho, int alto, Color fondo, int fontSize) {
+        JButton boton = new JButton("<html><center>" + texto + "</center></html>");
+        boton.setBounds(x, y, ancho, alto);
+        boton.setBackground(fondo);
+        boton.setForeground(Color.WHITE);
+        boton.setFont(new Font("Outfit", Font.BOLD, fontSize));
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        return boton;
+    }
+
+
 }

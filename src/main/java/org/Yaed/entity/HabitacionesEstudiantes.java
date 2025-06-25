@@ -2,12 +2,17 @@ package org.Yaed.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 public class HabitacionesEstudiantes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num-registro")
     private int numRegistro;
+
+    @Column (name = "fecha")
+    private LocalDate fecha;
 
     @ManyToOne
     @JoinColumn(name = "estudiante_id")
@@ -20,9 +25,10 @@ public class HabitacionesEstudiantes {
     public HabitacionesEstudiantes() {
     }
 
-    public HabitacionesEstudiantes(Estudiante estudiante, Habitacion habitacion) {
+    public HabitacionesEstudiantes(Estudiante estudiante, Habitacion habitacion, LocalDate fecha) {
         this.estudiante = estudiante;
         this.habitacion = habitacion;
+        this.fecha = fecha;
     }
 
     public int getNumRegistro() {
@@ -49,10 +55,19 @@ public class HabitacionesEstudiantes {
         this.habitacion = habitacion;
     }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString() {
         return "HabitacionesEstudiantes{" +
                 "numRegistro=" + numRegistro +
+                ", fecha=" + fecha +
                 ", estudiante=" + estudiante +
                 ", habitacion=" + habitacion +
                 '}';
