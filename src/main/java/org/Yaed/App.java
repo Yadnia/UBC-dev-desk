@@ -24,7 +24,6 @@ public class App {
             Usuario usuario = new Usuario("hola12@", "admin", "x", "1231", 20, "12345678", tipoUsuario);
             UserController.saveUser(usuario);
         }
-
         Random rand = new Random();
 
         List<String> nombres = Arrays.asList("Ana", "María", "Juana", "Lucía", "Carla", "Fernanda", "Isabel", "Paola", "Sofía", "Camila",
@@ -59,45 +58,8 @@ public class App {
             estudiante.setBecaid(becas.get(1));
 
             EstudiantesController.saveEstudiante(estudiante);
-        }
-//        List<String> nombresHombres = Arrays.asList(
-//                "Carlos", "Juan", "Luis", "Miguel", "Pedro", "Jorge", "Andrés", "Diego", "Francisco", "José",
-//                "Rafael", "Mario", "Alberto", "Sergio", "Fernando", "Eduardo", "Ricardo", "Oscar", "Roberto", "Daniel"
-//        );
-//        List<String> apellidos = Arrays.asList("Ramírez", "López", "González", "Martínez", "Rodríguez", "Pérez", "García", "Sánchez", "Castillo", "Cruz");
-//
-//        List<Etnia> etnias = EstudiantesController.getEtnias();
-//        List<Carrera> carreras = CarrerasController.getCarreras();
-//        List<Sede> sedes = CarrerasController.getSedes();
-//        List<EstadoEstudiante> estados = EstudiantesController.getEstadoEstudiantes();
-//        List<TipoEstudiante> tipoEstudiantes = EstudiantesController.getTipoEstudiantes();
-//
-//        for (int i = 0; i < 80; i++) {
-//            Estudiante estudiante = new Estudiante();
-//
-//            // Formato carnet: "xx-xxxxxx-0030"
-//            String carnet = String.format("%02d-%06d-0030", rand.nextInt(100), rand.nextInt(1000000));
-//
-//            String nombre = nombresHombres.get(i % nombresHombres.size()) + (i / nombresHombres.size() > 0 ? (" " + (i / nombresHombres.size())) : "");
-//            String apellido = apellidos.get(rand.nextInt(apellidos.size()));
-//            String telefono = "82" + String.format("%06d", rand.nextInt(1000000));
-//            List<Beca> becas = BecasController.getBecas();
-//
-//            estudiante.setCarnet(carnet);
-//            estudiante.setNombre(nombre);
-//            estudiante.setApellido(apellido);
-//            estudiante.setTelefono(telefono);
-//            estudiante.setFotoURL(null);
-//            estudiante.setSexo('M'); // Sexo masculino
-//            estudiante.setEtnia(etnias.get(0));
-//            estudiante.setCarrera(carreras.get(carreras.size() - 1));
-//            estudiante.setSede(sedes.get(0));
-//            estudiante.setEstado(estados.get(0));
-//            estudiante.setTipoEstudiante(tipoEstudiantes.get(0));
-//            estudiante.setBecaid(becas.get(1));
-//
-//            EstudiantesController.saveEstudiante(estudiante);
-//        }
+        }     
+
 
     }
 }
