@@ -51,6 +51,27 @@ public class Habitaciones extends JFrame {
         JButton botonOpciones = createButton("Opciones", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
         JButton botonAyuda = createButton("Ayuda", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
 
+       botonGenerar.addActionListener(e -> {
+           int opcion = JOptionPane.showOptionDialog(
+               this,
+               "¿Qué desea generar?",
+               "Generar",
+               JOptionPane.YES_NO_OPTION,
+               JOptionPane.QUESTION_MESSAGE,
+               null,
+               new Object[]{"Actividades", "Habitaciones"},
+               "Actividades"
+           );
+           if (opcion == JOptionPane.YES_OPTION) {
+               JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+           } else if (opcion == JOptionPane.NO_OPTION) {
+               HabController.AsignarMujeres();
+               HabController.AsignarHombres1();
+                HabController.AsignarHombres2();
+               JOptionPane.showMessageDialog(this, "Generación de Habitaciones completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+           }
+       });
+
         // Agregar botones al panel izquierdo
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(leftButton);
@@ -420,83 +441,7 @@ public class Habitaciones extends JFrame {
             }
         }
     }
-    public static void dividirEstudiantesM1Beca2(List<Estudiante> todos,
-                                                 List<Estudiante> grupo1,
-                                                 List<Estudiante> grupo2
-    ) {
-        // Limpiar listas
-        grupo1.clear(); grupo2.clear();
 
-        // Filtrar estudiantes mujeres con beca ID 2
-        List<Estudiante> filtradas = new ArrayList<>();
-        for (Estudiante e : todos) {
-            if (Character.toUpperCase(e.getSexo()) == 'F' && e.getBecaid() != null && e.getBecaid().getId() == 2) {
-                filtradas.add(e);
-            }
-        }
-
-        // Mezclar aleatoriamente
-        Collections.shuffle(filtradas);
-
-        // Dividir en grupos de 12 estudiantes máximo
-        for (int i = 0; i < filtradas.size(); i++) {
-            Estudiante estudiante = filtradas.get(i);
-            int grupo = i / 8;
-            switch (grupo) {
-                case 0 -> grupo1.add(estudiante);
-                case 1 -> grupo2.add(estudiante);
-                default -> {}
-            }
-        }
-    }
-    public static void dividirEstudiantesM2Beca2(List<Estudiante> todos,
-                                                 List<Estudiante> grupo1,
-                                                 List<Estudiante> grupo2,
-                                                 List<Estudiante> grupo3,
-                                                 List<Estudiante> grupo4,
-                                                 List<Estudiante> grupo5,
-                                                 List<Estudiante> grupo6
-    ) {
-        // Limpiar listas
-        grupo1.clear(); grupo2.clear();
-
-        // Filtrar estudiantes mujeres con beca ID 2
-        List<Estudiante> filtradas = new ArrayList<>();
-        for (Estudiante e : todos) {
-            if (Character.toUpperCase(e.getSexo()) == 'F' && e.getBecaid() != null && e.getBecaid().getId() == 2) {
-                filtradas.add(e);
-            }
-        }
-
-        // Mezclar aleatoriamente
-        Collections.shuffle(filtradas);
-
-        // Dividir en grupos de 12 estudiantes máximo
-        for (int i = 0; i < filtradas.size(); i++) {
-            Estudiante estudiante = filtradas.get(i);
-            int grupo = i / 10;
-            switch (grupo) {
-                case 0 -> grupo1.add(estudiante);
-                case 1 -> grupo2.add(estudiante);
-                case 2 -> grupo3.add(estudiante);
-                case 3 -> grupo4.add(estudiante);
-                case 4 -> grupo5.add(estudiante);
-                case 5 -> grupo6.add(estudiante);
-                default -> {}
-            }
-        }
-    }
-    private JButton crearBotonHabitacion(String texto, int x, int y, int ancho, int alto, Color fondo, int fontSize) {
-        JButton boton = new JButton("<html><center>" + texto + "</center></html>");
-        boton.setBounds(x, y, ancho, alto);
-        boton.setBackground(fondo);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Outfit", Font.BOLD, fontSize));
-        boton.setFocusPainted(false);
-        boton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        return boton;
-    }
 
 
 }
