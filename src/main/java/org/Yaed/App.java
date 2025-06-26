@@ -24,7 +24,6 @@ public class App {
             Usuario usuario = new Usuario("hola12@", "admin", "x", "1231", 20, "12345678", tipoUsuario);
             UserController.saveUser(usuario);
         }
-
-        Random rand = new Random();
+      
+        }     
     }
-}
