@@ -97,7 +97,26 @@ public class EstudiantesController {
         etnias = etniaService.getAll();
         return etnias;
     }
-
+    public static Etnia getEtniaById(int id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Etnia etnia = session.get(Etnia.class, id);
+        session.close();
+        return etnia;
+    }
+    public static void borrarVeinteHombres() {
+        List<Estudiante> estudiantes = getEstudiantes();
+        int borrados = 0;
+        for (int i = 0; i < estudiantes.size() && borrados < 20; ) {
+            Estudiante e = estudiantes.get(i);
+            if (Character.toUpperCase(e.getSexo()) == 'M') {
+                deleteEstudiante(e); // Borra de la base de datos
+                estudiantes.remove(i); // Borra de la lista en memoria
+                borrados++;
+            } else {
+                i++;
+            }
+        }
+    }
 
 
 }

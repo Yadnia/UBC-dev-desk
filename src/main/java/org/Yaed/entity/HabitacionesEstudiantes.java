@@ -14,6 +14,9 @@ public class HabitacionesEstudiantes {
     @Column (name = "Semestre")
     private String fecha;
 
+    @Column (name = "anio")
+    private String anio;
+
     @ManyToOne
     @JoinColumn(name = "estudiante_id")
     private Estudiante estudiante;
@@ -25,10 +28,11 @@ public class HabitacionesEstudiantes {
     public HabitacionesEstudiantes() {
     }
 
-    public HabitacionesEstudiantes(Estudiante estudiante, Habitacion habitacion, String fecha) {
+    public HabitacionesEstudiantes(Estudiante estudiante, Habitacion habitacion,String anio, String semestre) {
         this.estudiante = estudiante;
         this.habitacion = habitacion;
-      this.fecha = fecha;
+      this.fecha = semestre;
+        this.anio = anio;
     }
 
     public int getNumRegistro() {
@@ -63,11 +67,20 @@ public class HabitacionesEstudiantes {
         this.fecha = fecha;
     }
 
+    public String getAnio() {
+        return anio;
+    }
+
+    public void setAnio(String anio) {
+        this.anio = anio;
+    }
+
     @Override
     public String toString() {
         return "HabitacionesEstudiantes{" +
                 "numRegistro=" + numRegistro +
                 ", fecha=" + fecha +
+                ", anio='" + anio + '\'' +
                 ", estudiante=" + estudiante +
                 ", habitacion=" + habitacion +
                 '}';

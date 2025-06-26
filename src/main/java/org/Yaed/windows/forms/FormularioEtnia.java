@@ -1,4 +1,4 @@
-package org.Yaed.windows;
+package org.Yaed.windows.forms;
 
 import org.Yaed.controller.EstudiantesController;
 import org.Yaed.entity.Etnia;

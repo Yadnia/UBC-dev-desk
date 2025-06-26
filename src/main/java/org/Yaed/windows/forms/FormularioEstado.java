@@ -1,23 +1,23 @@
-package org.Yaed.windows;
+package org.Yaed.windows.forms;
 
-import org.Yaed.controller.CarrerasController;
-import org.Yaed.entity.Sede;
+import org.Yaed.controller.EstudiantesController;
+import org.Yaed.entity.EstadoEstudiante;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class FormularioSede extends JFrame {
+public class FormularioEstado extends JFrame {
 
     private JTextField txtNombre;
 
-    public FormularioSede() {
-        setTitle("Agregar Sede");
+    public FormularioEstado() {
+        setTitle("Agregar Estado");
         setSize(300, 150);
         setLocationRelativeTo(null); // Centrada en pantalla
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(2, 2, 10, 10));
 
-        add(new JLabel("Nombre de la sede:"));
+        add(new JLabel("Nombre del estado:"));
         txtNombre = new JTextField();
         add(txtNombre);
 
@@ -36,11 +36,11 @@ public class FormularioSede extends JFrame {
                 return;
             }
 
-            Sede nueva = new Sede();
-            nueva.setNombre(nombre);
-            CarrerasController.saveSede(nueva);
+            EstadoEstudiante estado = new EstadoEstudiante(nombre);
+            estado.setNombre(nombre);
+            EstudiantesController.saveEstadoEstudiante(estado);
 
-            JOptionPane.showMessageDialog(this, "Sede guardada correctamente.");
+            JOptionPane.showMessageDialog(this, "Estado guardado correctamente.");
             dispose();
         });
     }
