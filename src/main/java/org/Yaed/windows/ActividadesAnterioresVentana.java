@@ -1,10 +1,18 @@
 package org.Yaed.windows;
 
+import org.Yaed.controller.HabController;
+import org.Yaed.controller.PastController;
+import org.Yaed.entity.Habitacion;
+import org.Yaed.entity.HabitacionesEstudiantes;
+import org.Yaed.entity.PastActs;
+import org.Yaed.entity.PastHabs;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+import java.util.List;
 
 public class ActividadesAnterioresVentana extends JFrame {
     public ActividadesAnterioresVentana() {
@@ -32,17 +40,12 @@ public class ActividadesAnterioresVentana extends JFrame {
 
         // Modelo de tabla
         String[] columnas = {"actividad", "nombre", "apellido"};
-        Object[][] datos = {
-            {"Deporte", "Ana", "Pérez"},
-            {"Música", "Luis", "Gómez"},
-            {"Arte", "María", "López"},
-            {"Ciencia", "Carlos", "Ruiz"}
-        };
-        DefaultTableModel model = new DefaultTableModel(datos, columnas) {
+        DefaultTableModel model = new DefaultTableModel(columnas, 0) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
+        addRows(model);
 
         JTable table = new JTable(model);
         table.setFont(tableFont);
@@ -74,4 +77,17 @@ public class ActividadesAnterioresVentana extends JFrame {
         setContentPane(mainPanel);
         setVisible(true);
     }
-}
+
+    public static void addRows(DefaultTableModel model) {
+        model.setRowCount(0);
+        List<PastActs> habsEst = PastController.getPastActs();
+        for (PastActs habEst : habsEst) {
+                    model.addRow(new Object[]{
+                            habEst.getActividad().getNombre(),
+                            habEst.getEstudiante().getNombre(),
+                            habEst.getEstudiante().getApellido(),
+                    });
+                }
+            }
+        }
+

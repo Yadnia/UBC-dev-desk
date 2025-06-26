@@ -1,10 +1,14 @@
 package org.Yaed.windows;
 
+import org.Yaed.controller.PastController;
+import org.Yaed.entity.PastHabs;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+import java.util.List;
 
 public class OrganizacionesAnterioresVentana extends JFrame {
     public OrganizacionesAnterioresVentana() {
@@ -32,17 +36,12 @@ public class OrganizacionesAnterioresVentana extends JFrame {
 
         // Modelo de tabla
         String[] columnas = {"cuarto", "nombres", "edad", "etnia"};
-        Object[][] datos = {
-            {"101", "Ana Pérez", 19, "Mestiza"},
-            {"102", "Luis Gómez", 20, "Indígena"},
-            {"103", "María López", 18, "Afrodescendiente"},
-            {"104", "Carlos Ruiz", 21, "Mestizo"}
-        };
-        DefaultTableModel model = new DefaultTableModel(datos, columnas) {
+        DefaultTableModel model = new DefaultTableModel(columnas, 0) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
+        addRows(model);
 
         JTable table = new JTable(model);
         table.setFont(tableFont);
@@ -73,5 +72,19 @@ public class OrganizacionesAnterioresVentana extends JFrame {
 
         setContentPane(mainPanel);
         setVisible(true);
+    }
+    public static void addRows(DefaultTableModel model) {
+        model.setRowCount(0);
+        List<PastHabs> habsEst = PastController.getPastHabs();
+        for (PastHabs habEst : habsEst) {
+            model.addRow(new Object[]{
+                    habEst.getHabitacion().getNombre(),
+                    habEst.getEstudiante().getNombre(),
+                    habEst.getEstudiante().getApellido(),
+                    habEst.getEstudiante().getEdad(),
+                    habEst.getEstudiante().getEtnia().getNombre(),
+
+            });
+        }
     }
 }

@@ -2,7 +2,7 @@ package org.Yaed.entity;
 
 import jakarta.persistence.*;
 
-@Entity (name = "pastacts")
+@Entity (name = "PastActs")
 public class PastActs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

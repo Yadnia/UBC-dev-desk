@@ -47,7 +47,7 @@ public class PastController {
         IGenericService<PastActs> service = new GenericServiceImpl<>(PastActs.class, HibernateUtil.getSessionFactory());
         service.delete(actividad);
     }
-    public static List<PastActs> getActividades() {
+    public static List<PastActs> getPastActs() {
         IGenericService<PastActs> service = new GenericServiceImpl<>(PastActs.class, HibernateUtil.getSessionFactory());
         return service.getAll();
     }
