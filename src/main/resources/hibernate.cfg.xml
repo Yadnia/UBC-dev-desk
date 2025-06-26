@@ -53,10 +53,5 @@
         <mapping class="org.Yaed.entity.ActividadesEstudiantesInternado"></mapping>
         <mapping class="org.Yaed.entity.PastHabs"></mapping>
         <mapping class="org.Yaed.entity.PastActs"></mapping>
-
-
-
-
-
     </session-factory>
 </hibernate-configuration>
