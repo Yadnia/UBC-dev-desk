@@ -1,9 +1,14 @@
 package org.Yaed.windows.cuartosM;
 
+import org.Yaed.controller.HabController;
+import org.Yaed.entity.Habitacion;
+import org.Yaed.entity.HabitacionesEstudiantes;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 public class HabitacionM7 extends JFrame {
     public HabitacionM7() {
@@ -38,16 +43,12 @@ public class HabitacionM7 extends JFrame {
         selectorPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
         JLabel mesLabel = new JLabel("Seleccionar periodo:");
         mesLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        JComboBox<String> mesCombo = new JComboBox<>(new String[]{
-                "I Semestre", "II Semestre"
-        });
         JLabel anioLabel = new JLabel("Año:");
         anioLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         JComboBox<String> anioCombo = new JComboBox<>(new String[]{
                 "2023", "2024", "2025"
         });
         selectorPanel.add(mesLabel);
-        selectorPanel.add(mesCombo);
         selectorPanel.add(anioLabel);
         selectorPanel.add(anioCombo);
 
@@ -77,6 +78,22 @@ public class HabitacionM7 extends JFrame {
         topPanel.setBackground(bgColor);
         topPanel.add(titleLabel);
         topPanel.add(subtitleLabel);
+        anioCombo.addActionListener(e -> {
+            String anioSeleccionado = (String) anioCombo.getSelectedItem();
+            if (anioSeleccionado != null) {
+                switch (anioSeleccionado) {
+                    case "2023":
+                        addRows23(model);
+                        break;
+                    case "2024":
+                        addRows24(model);
+                        break;
+                    case "2025":
+                        addRows25(model);
+                        break;
+                }
+            }
+        });
 
         JPanel centerPanel = new JPanel(new BorderLayout(0, 15));
         centerPanel.setBackground(bgColor);
@@ -90,5 +107,69 @@ public class HabitacionM7 extends JFrame {
 
         setContentPane(mainPanel);
     }
-}
+    public static void addRows25(DefaultTableModel model) {
+        model.setRowCount(0);
+        java.util.List<HabitacionesEstudiantes> habsEst = HabController.getHabitacionesEstudiantes();
+        for (HabitacionesEstudiantes habEst : habsEst) {
+            // Verificamos año y semestre
+            if ("2025".equals(habEst.getAnio()) && "I Semestre".equals(habEst.getFecha())) {
+                Habitacion hab1 = habEst.getHabitacion();
+                int idHab = hab1.getId(); // Obtenemos el ID de la habitación
 
+                // Verificamos si el ID de la habitación es 1, 2 o 3
+                if (idHab == 33) {
+                    model.addRow(new Object[]{
+                            habEst.getEstudiante().getNombre(),
+                            habEst.getEstudiante().getApellido(),
+                            habEst.getEstudiante().getEdad(),
+                            habEst.getEstudiante().getEtnia().getNombre(),
+                            habEst.getFecha(),
+                    });
+                }
+            }
+        }
+    }
+    public static void addRows24(DefaultTableModel model) {
+        model.setRowCount(0);
+        java.util.List<HabitacionesEstudiantes> habsEst = HabController.getHabitacionesEstudiantes();
+        for (HabitacionesEstudiantes habEst : habsEst) {
+            // Verificamos año y semestre
+            if ("2024".equals(habEst.getAnio()) && "I Semestre".equals(habEst.getFecha())) {
+                Habitacion hab1 = habEst.getHabitacion();
+                int idHab = hab1.getId(); // Obtenemos el ID de la habitación
+                // Verificamos si el ID de la habitación es 1, 2 o 3
+                if (idHab ==33) {
+                    model.addRow(new Object[]{
+                            habEst.getEstudiante().getNombre(),
+                            habEst.getEstudiante().getApellido(),
+                            habEst.getEstudiante().getEdad(),
+                            habEst.getEstudiante().getEtnia().getNombre(),
+                            habEst.getFecha(),
+                    });
+                }
+            }
+        }
+    }
+    public static void addRows23(DefaultTableModel model) {
+        model.setRowCount(0);
+        List<HabitacionesEstudiantes> habsEst = HabController.getHabitacionesEstudiantes();
+        for (HabitacionesEstudiantes habEst : habsEst) {
+            // Verificamos año y semestre
+            if ("2024".equals(habEst.getAnio()) && "I Semestre".equals(habEst.getFecha())) {
+                Habitacion hab1 = habEst.getHabitacion();
+                int idHab = hab1.getId(); // Obtenemos el ID de la habitación
+                // Verificamos si el ID de la habitación es 1, 2 o 3
+                if (idHab == 33) {
+                    model.addRow(new Object[]{
+                            habEst.getEstudiante().getNombre(),
+                            habEst.getEstudiante().getApellido(),
+                            habEst.getEstudiante().getEdad(),
+                            habEst.getEstudiante().getEtnia().getNombre(),
+                            habEst.getFecha(),
+                    });
+                }
+            }
+        }
+    }
+
+}

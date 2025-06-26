@@ -150,7 +150,7 @@ public class Habitaciones extends JFrame {
    panelMediano1.setBounds(40, 200, 150, 90);
    panelDown.add(panelMediano1);
     panelMediano1.addActionListener( e ->{
-         new HabitacionF8.HabitacionM1();
+         new HabitacionM1();
     });
 
    JButton panelMediano2 = createRoomButton("Habitación Mediana 2", new Color(50, 90, 160), Color.WHITE);

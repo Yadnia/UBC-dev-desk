@@ -10,9 +10,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class HabitacionM5 extends JFrame {
-    public HabitacionM5() {
-        setTitle("Casa Mediana 5");
+public class HabitacionM1 extends JFrame {
+    public HabitacionM1() {
+        setTitle("Casa Mediana 2");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
@@ -28,16 +28,19 @@ public class HabitacionM5 extends JFrame {
         mainPanel.setLayout(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JLabel titleLabel = new JLabel("Casa Mediana 5 (Masculino)");
+        // Título
+        JLabel titleLabel = new JLabel("Casa Mediana 1 (Masculino)");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(accentColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel subtitleLabel = new JLabel("Cuarto 5");
+        // Subtítulo
+        JLabel subtitleLabel = new JLabel("Cuarto 2");
         subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         subtitleLabel.setForeground(Color.DARK_GRAY);
         subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
+        // Selector de mes y año (reemplaza el botón buscar por un combo de año)
         JPanel selectorPanel = new JPanel();
         selectorPanel.setBackground(bgColor);
         selectorPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
@@ -61,10 +64,12 @@ public class HabitacionM5 extends JFrame {
         tabla.setSelectionBackground(new Color(204, 229, 255));
         tabla.setSelectionForeground(Color.BLACK);
 
+        // Encabezado bonito
         tabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         tabla.getTableHeader().setBackground(tableHeaderColor);
         tabla.getTableHeader().setForeground(accentColor);
 
+        // Centrar columnas
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < tabla.getColumnCount(); i++) {
@@ -74,6 +79,13 @@ public class HabitacionM5 extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tabla);
         scrollPane.setBorder(BorderFactory.createLineBorder(accentColor, 1));
 
+        // Layout
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
+        mainPanel.add(subtitleLabel, BorderLayout.BEFORE_FIRST_LINE);
+        mainPanel.add(selectorPanel, BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.SOUTH);
+
+        // Ajuste de layout para que todo quede bien distribuido
         JPanel topPanel = new JPanel(new GridLayout(2, 1));
         topPanel.setBackground(bgColor);
         topPanel.add(titleLabel);
@@ -118,7 +130,7 @@ public class HabitacionM5 extends JFrame {
                 int idHab = hab1.getId(); // Obtenemos el ID de la habitación
 
                 // Verificamos si el ID de la habitación es 1, 2 o 3
-                if (idHab == 31) {
+                if (idHab == 27) {
                     model.addRow(new Object[]{
                             habEst.getEstudiante().getNombre(),
                             habEst.getEstudiante().getApellido(),
@@ -139,7 +151,7 @@ public class HabitacionM5 extends JFrame {
                 Habitacion hab1 = habEst.getHabitacion();
                 int idHab = hab1.getId(); // Obtenemos el ID de la habitación
                 // Verificamos si el ID de la habitación es 1, 2 o 3
-                if (idHab == 31) {
+                if (idHab == 27) {
                     model.addRow(new Object[]{
                             habEst.getEstudiante().getNombre(),
                             habEst.getEstudiante().getApellido(),
@@ -160,7 +172,7 @@ public class HabitacionM5 extends JFrame {
                 Habitacion hab1 = habEst.getHabitacion();
                 int idHab = hab1.getId(); // Obtenemos el ID de la habitación
                 // Verificamos si el ID de la habitación es 1, 2 o 3
-                if (idHab == 31) {
+                if (idHab == 27) {
                     model.addRow(new Object[]{
                             habEst.getEstudiante().getNombre(),
                             habEst.getEstudiante().getApellido(),
