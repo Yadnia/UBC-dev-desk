@@ -17,6 +17,8 @@ public class Estudiante {
     private String apellido;
     @Column (name = "celular")
     private String telefono;
+    @Column(name = "edad")
+    private Integer edad;
 
     @ManyToOne
     @JoinColumn (name = "etnia-id")
@@ -76,12 +78,13 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(String carnet, String cedula, String nombre, String apellido, String telefono, Etnia etnia, Carrera carrera, String fotoURL, Sede sede, char sexo, EstadoEstudiante estado, TipoEstudiante tipoEstudiante, Beca becaid, List<HabitacionesEstudiantes> habitaciones, List<LlamadosEstudiantes> llamadosEstudiantes, List<ActividadesEstudiantesPsicologia> actividadesEstudiantePsicologias, List<GruposCulturaEstudiantes> gruposCulturaEstudiantes, List<GruposDeportesEstudiantes> gruposDeportesEstudiantes, List<DocumentosEstudiantes> documentosEstudiantes, List<ActividadesEstudiantesCultura> actividadesEstudiantesCulturas, List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantesCulturas) {
+    public Estudiante(String carnet, String cedula, String nombre, String apellido, String telefono, Integer edad,Etnia etnia, Carrera carrera, String fotoURL, Sede sede, char sexo, EstadoEstudiante estado, TipoEstudiante tipoEstudiante, Beca becaid, List<HabitacionesEstudiantes> habitaciones, List<LlamadosEstudiantes> llamadosEstudiantes, List<ActividadesEstudiantesPsicologia> actividadesEstudiantePsicologias, List<GruposCulturaEstudiantes> gruposCulturaEstudiantes, List<GruposDeportesEstudiantes> gruposDeportesEstudiantes, List<DocumentosEstudiantes> documentosEstudiantes, List<ActividadesEstudiantesCultura> actividadesEstudiantesCulturas, List<ActividadesDeportesEstudiantes> actividadesDeportesEstudiantesCulturas) {
         this.carnet = carnet;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
+        this.edad = edad;
         this.etnia = etnia;
         this.carrera = carrera;
         this.fotoURL = fotoURL;
@@ -98,6 +101,14 @@ public class Estudiante {
         this.documentosEstudiantes = documentosEstudiantes;
         this.actividadesEstudiantesCulturas = actividadesEstudiantesCulturas;
         this.actividadesDeportesEstudiantes = actividadesDeportesEstudiantesCulturas;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 
     public String getCarnet() {
@@ -269,6 +280,7 @@ public class Estudiante {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", edad=" + edad +
                 ", etnia=" + etnia +
                 ", carrera=" + carrera +
                 ", fotoURL='" + fotoURL + '\'' +
