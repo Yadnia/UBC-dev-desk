@@ -2,9 +2,8 @@ package org.Yaed.entity;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "actividades_estudiantes_internado")
-public class ActividadesEstudiantesInternado {
+@Entity (name = "PastActs")
+public class PastActs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,9 +17,9 @@ public class ActividadesEstudiantesInternado {
     private ActividadInternado actividad;
 
     // Constructor vacío
-    public ActividadesEstudiantesInternado() {}
+    public PastActs() {}
 
-    public ActividadesEstudiantesInternado(Estudiante estudiante, ActividadInternado actividad) {
+    public PastActs(Estudiante estudiante, ActividadInternado actividad) {
         this.estudiante = estudiante;
         this.actividad = actividad;
     }

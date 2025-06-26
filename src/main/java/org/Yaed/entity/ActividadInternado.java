@@ -54,4 +54,8 @@ public class ActividadInternado {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Estudiante get() {
+        return null;
+    }
 }
