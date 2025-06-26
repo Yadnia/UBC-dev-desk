@@ -3,6 +3,7 @@ package org.Yaed.windows;
 import org.Yaed.controller.ActController;
 import org.Yaed.controller.EstudiantesController;
 import org.Yaed.controller.HabController;
+import org.Yaed.controller.PastController;
 import org.Yaed.entity.Estudiante;
 
 import javax.swing.*;
@@ -185,6 +186,7 @@ public class ListadoEstudiantes extends JFrame {
                             JOptionPane.QUESTION_MESSAGE
                     );
                     if (confirm == JOptionPane.YES_OPTION) {
+                        PastController.respaldarActividades();
                         ActController.eliminarActividades();
                         ActController.AsignarActividades();
                         JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -205,6 +207,7 @@ public class ListadoEstudiantes extends JFrame {
                             JOptionPane.QUESTION_MESSAGE
                     );
                     if (confirm == JOptionPane.YES_OPTION) {
+                        PastController.respaldarHabitaciones();
                         HabController.eliminarHabitaciones();
                         HabController.AsignarMujeres();
                         HabController.AsignarHombres1();
@@ -233,6 +236,10 @@ public class ListadoEstudiantes extends JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonOpciones.setBackground(normalBg4);
             }
+        });
+        botonOpciones.addActionListener(e -> {
+            new HistorialVentana().setVisible(true);
+            dispose();
         });
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(botonOpciones);

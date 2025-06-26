@@ -51,6 +51,9 @@
         <mapping class="org.Yaed.entity.Usuario"></mapping>
         <mapping class="org.Yaed.entity.ActividadInternado"></mapping>
         <mapping class="org.Yaed.entity.ActividadesEstudiantesInternado"></mapping>
+        <mapping class="org.Yaed.entity.PastHabs"></mapping>
+        <mapping class="org.Yaed.entity.PastActs"></mapping>
+
 
 
 

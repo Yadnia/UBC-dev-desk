@@ -2,8 +2,10 @@ package org.Yaed.windows;
 
 import org.Yaed.controller.ActController;
 import org.Yaed.controller.HabController;
+import org.Yaed.controller.PastController;
 import org.Yaed.entity.ActividadesEstudiantesInternado;
 import org.Yaed.entity.HabitacionesEstudiantes;
+import org.Yaed.entity.PastActs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -182,6 +184,10 @@ public class BecasInicio extends JFrame {
         });
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(botonOpciones);
+        botonOpciones.addActionListener(e -> {
+            new HistorialVentana();
+            dispose();
+        });
 
 // BOTÓN 5
         JButton botonAyuda = new JButton("Ayuda");
@@ -282,6 +288,7 @@ public class BecasInicio extends JFrame {
                     JOptionPane.QUESTION_MESSAGE
             );
             if (opcion == JOptionPane.YES_OPTION) {
+                PastController.respaldarActividades();
                 ActController.eliminarActividades();
                 panel1.removeAll();
                 panel1.revalidate();
@@ -325,6 +332,7 @@ public class BecasInicio extends JFrame {
                           JOptionPane.QUESTION_MESSAGE
                   );
                   if (confirm == JOptionPane.YES_OPTION) {
+                      PastController.respaldarActividades();
                       ActController.eliminarActividades();
                       ActController.AsignarActividades();
                       llenarPanel1(panel1, ActController.getActividades());
@@ -348,6 +356,7 @@ public class BecasInicio extends JFrame {
                           JOptionPane.QUESTION_MESSAGE
                   );
                   if (confirm == JOptionPane.YES_OPTION) {
+                      PastController.respaldarHabitaciones();
                       HabController.eliminarHabitaciones();
                       HabController.AsignarMujeres();
                       HabController.AsignarHombres1();
@@ -440,6 +449,7 @@ public class BecasInicio extends JFrame {
         }
 
 }
+
 
 }
 

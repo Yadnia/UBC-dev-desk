@@ -3,8 +3,10 @@ package org.Yaed.windows;
 import org.Yaed.controller.ActController;
 import org.Yaed.controller.EstudiantesController;
 import org.Yaed.controller.HabController;
+import org.Yaed.controller.PastController;
 import org.Yaed.entity.Estudiante;
 import org.Yaed.entity.HabitacionesEstudiantes;
+import org.Yaed.entity.PastActs;
 import org.Yaed.windows.cuartosF.*;
 import org.Yaed.windows.cuartosM.*;
 
@@ -76,6 +78,7 @@ public class Habitaciones extends JFrame {
                             JOptionPane.QUESTION_MESSAGE
                     );
                     if (confirm == JOptionPane.YES_OPTION) {
+                        PastController.respaldarActividades();
                         ActController.eliminarActividades();
                         ActController.AsignarActividades();
                         JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -96,6 +99,7 @@ public class Habitaciones extends JFrame {
                             JOptionPane.QUESTION_MESSAGE
                     );
                     if (confirm == JOptionPane.YES_OPTION) {
+                        PastController.respaldarHabitaciones();
                         HabController.eliminarHabitaciones();
                         HabController.AsignarMujeres();
                         HabController.AsignarHombres1();
@@ -165,6 +169,11 @@ public class Habitaciones extends JFrame {
         panelDown.setBackground(rightColor);
         panelDown.setLayout(null);
         rightPanel.add(panelDown, BorderLayout.CENTER);
+
+        botonOpciones.addActionListener(e -> {
+            new HistorialVentana();
+            dispose();
+        });
 
         // Crear botones para habitaciones grandes
         JButton panelGrande1 = createRoomButton("Habitación Grande 1", new Color(30, 60, 120), Color.WHITE);
