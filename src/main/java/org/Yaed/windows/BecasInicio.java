@@ -1,7 +1,13 @@
 package org.Yaed.windows;
 
+import org.Yaed.controller.ActController;
+import org.Yaed.controller.HabController;
+import org.Yaed.entity.ActividadesEstudiantesInternado;
+import org.Yaed.entity.HabitacionesEstudiantes;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class BecasInicio extends JFrame {
     public BecasInicio() {
@@ -44,6 +50,7 @@ public class BecasInicio extends JFrame {
                 leftButton.setBackground(normalBg);
             }
         });
+
 
         leftButton.addActionListener(e -> {});
         leftButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -223,8 +230,8 @@ public class BecasInicio extends JFrame {
                 BorderFactory.createEmptyBorder(8, 10, 8, 10)
         ));
 
-        JButton searchButton = new JButton("🔍");
-        searchButton.setPreferredSize(new Dimension(50, 35));
+        JButton searchButton = new JButton("Reestablecer");
+        searchButton.setPreferredSize(new Dimension(150, 35));
         searchButton.setBackground(new Color(60, 80, 140));
         searchButton.setForeground(Color.WHITE);
         searchButton.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -241,13 +248,6 @@ public class BecasInicio extends JFrame {
         panelDown.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
         rightPanel.add(panelDown, BorderLayout.CENTER);
 
-        String[] ests = {
-                "Estudiante1",
-                "Estudiante2",
-                "Estudiante3",
-                "Estudiante4",
-                "Estudiante5",
-        };
 
         // Panel 1
         JPanel panel1 = new JPanel();
@@ -255,21 +255,7 @@ public class BecasInicio extends JFrame {
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
         panel1.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panelDown.add(panel1);
-
-        JLabel labelLimpieza = new JLabel("Limpieza");
-        labelLimpieza.setForeground(Color.WHITE);
-        labelLimpieza.setFont(new Font("Outfit", Font.BOLD, 18));
-        labelLimpieza.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel1.add(labelLimpieza);
-
-        for (String est : ests) {
-            JLabel label = new JLabel(est);
-            label.setFont(new Font("Outfit", Font.PLAIN, 13));
-            label.setForeground(Color.WHITE);
-            label.setAlignmentX(Component.CENTER_ALIGNMENT);
-            panel1.add(Box.createVerticalStrut(10));
-            panel1.add(label);
-        }
+        llenarPanel1(panel1, ActController.getActividades());
 
         // Panel 2
         JPanel panel2 = new JPanel();
@@ -277,21 +263,7 @@ public class BecasInicio extends JFrame {
         panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
         panel2.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panelDown.add(panel2);
-
-        JLabel actvlabel = new JLabel("Actividades colaborativas");
-        actvlabel.setForeground(Color.WHITE);
-        actvlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        actvlabel.setFont(new Font("Outfit", Font.BOLD, 16));
-        panel2.add(actvlabel);
-
-        for (String est : ests) {
-            JLabel label = new JLabel(est);
-            label.setFont(new Font("Outfit", Font.PLAIN, 13));
-            label.setForeground(Color.WHITE);
-            label.setAlignmentX(Component.CENTER_ALIGNMENT);
-            panel2.add(Box.createVerticalStrut(10));
-            panel2.add(label);
-        }
+        llenarPanel2(panel2, ActController.getActividades());
 
         // Panel 3
         JPanel panel3 = new JPanel();
@@ -299,25 +271,175 @@ public class BecasInicio extends JFrame {
         panel3.setLayout(new BoxLayout(panel3, BoxLayout.Y_AXIS));
         panel3.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panelDown.add(panel3);
+        llenarPanel3(panel3, ActController.getActividades());
 
-        JLabel KitSuplabel = new JLabel("Apoyo en cocina");
-        KitSuplabel.setForeground(Color.WHITE);
-        KitSuplabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        KitSuplabel.setFont(new Font("Outfit", Font.BOLD, 16));
-        panel3.add(KitSuplabel);
+        searchButton.addActionListener(e -> {
+            int opcion = JOptionPane.showConfirmDialog(
+                    this,
+                    "¿Está seguro que desea reestablecer las actividades?",
+                    "Reestablecer actividades",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE
+            );
+            if (opcion == JOptionPane.YES_OPTION) {
+                ActController.eliminarActividades();
+                panel1.removeAll();
+                panel1.revalidate();
+                panel1.repaint();
+                panel2.removeAll();
+                panel2.revalidate();
+                panel2.repaint();
+                panel3.removeAll();
+                panel3.revalidate();
+                panel3.repaint();
 
-        for (String est : ests) {
-            JLabel label = new JLabel(est);
-            label.setFont(new Font("Outfit", Font.PLAIN, 13));
-            label.setForeground(Color.WHITE);
-            label.setAlignmentX(Component.CENTER_ALIGNMENT);
-            panel3.add(Box.createVerticalStrut(10));
-            panel3.add(label);
-        }
+            } else if (opcion == JOptionPane.NO_OPTION) {
+                // Acción si el usuario elige "No"
+            }
+        });
+
+      botonGenerar.addActionListener(e -> {
+          int opcion = JOptionPane.showOptionDialog(
+                  this,
+                  "¿Qué desea generar?",
+                  "Generar",
+                  JOptionPane.YES_NO_OPTION,
+                  JOptionPane.QUESTION_MESSAGE,
+                  null,
+                  new Object[]{"Actividades", "Habitaciones"},
+                  "Actividades"
+          );
+          if (opcion == JOptionPane.YES_OPTION) { // Actividades
+              if (ActController.getActividades().isEmpty()) {
+                  ActController.AsignarActividades();
+                  llenarPanel1(panel1, ActController.getActividades());
+                  llenarPanel2(panel2, ActController.getActividades());
+                  llenarPanel3(panel3, ActController.getActividades());
+                  JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              } else {
+                  int confirm = JOptionPane.showConfirmDialog(
+                          this,
+                          "Ya existen actividades asignadas. ¿Desea reestablecer las actividades y generar nuevas?",
+                          "Reestablecer actividades",
+                          JOptionPane.YES_NO_OPTION,
+                          JOptionPane.QUESTION_MESSAGE
+                  );
+                  if (confirm == JOptionPane.YES_OPTION) {
+                      ActController.eliminarActividades();
+                      ActController.AsignarActividades();
+                      llenarPanel1(panel1, ActController.getActividades());
+                      llenarPanel2(panel2, ActController.getActividades());
+                      llenarPanel3(panel3, ActController.getActividades());
+                      JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                  }
+              }
+          } else if (opcion == JOptionPane.NO_OPTION) { // Habitaciones
+              if (HabController.getHabitaciones().isEmpty()) {
+                  HabController.AsignarMujeres();
+                  HabController.AsignarHombres1();
+                  HabController.AsignarHombres2();
+                  JOptionPane.showMessageDialog(this, "Generación de Habitaciones completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              } else {
+                  int confirm = JOptionPane.showConfirmDialog(
+                          this,
+                          "Ya existen habitaciones asignadas. ¿Desea reestablecer las habitaciones y generar nuevas?",
+                          "Reestablecer habitaciones",
+                          JOptionPane.YES_NO_OPTION,
+                          JOptionPane.QUESTION_MESSAGE
+                  );
+                  if (confirm == JOptionPane.YES_OPTION) {
+                      HabController.eliminarHabitaciones();
+                      HabController.AsignarMujeres();
+                      HabController.AsignarHombres1();
+                      HabController.AsignarHombres2();
+                  }
+              }
+          }
+      });
 
         add(leftPanel, BorderLayout.WEST);
         add(rightPanel, BorderLayout.CENTER);
 
         setVisible(true);
     }
+    public static void llenarPanel1 (JPanel panel, List<ActividadesEstudiantesInternado> actividades) {
+        panel.removeAll();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JLabel label = new JLabel("Actividades de Limpieza");
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Outfit", Font.BOLD, 18));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(label);
+
+        for (ActividadesEstudiantesInternado actividad : actividades) {
+            if (actividad.getActividad().getId() ==1){
+            JLabel actividadLabel = new JLabel(actividad.getEstudiante().getNombre() +" "+ actividad.getEstudiante().getApellido());
+            actividadLabel.setFont(new Font("Outfit", Font.PLAIN, 13));
+            actividadLabel.setForeground(Color.WHITE);
+            actividadLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(Box.createVerticalStrut(10));
+            panel.add(actividadLabel);
+        }
+
+        panel.revalidate();
+        panel.repaint();
+    }
+
+
+    }
+    public static void llenarPanel2 (JPanel panel, List<ActividadesEstudiantesInternado> actividades) {
+        panel.removeAll();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JLabel label = new JLabel("Actividades colaborativas");
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Outfit", Font.BOLD, 18));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(label);
+
+        for (ActividadesEstudiantesInternado actividad : actividades) {
+            if (actividad.getActividad().getId() ==2){
+                JLabel actividadLabel = new JLabel(actividad.getEstudiante().getNombre() +" "+ actividad.getEstudiante().getApellido());
+                actividadLabel.setFont(new Font("Outfit", Font.PLAIN, 13));
+                actividadLabel.setForeground(Color.WHITE);
+                actividadLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                panel.add(Box.createVerticalStrut(10));
+                panel.add(actividadLabel);
+            }
+
+            panel.revalidate();
+            panel.repaint();
+        }
 }
+    public static void llenarPanel3 (JPanel panel, List<ActividadesEstudiantesInternado> actividades) {
+        panel.removeAll();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JLabel label = new JLabel("Apoyo en cocina");
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Outfit", Font.BOLD, 18));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(label);
+
+        for (ActividadesEstudiantesInternado actividad : actividades) {
+            if (actividad.getActividad().getId() ==3){
+                JLabel actividadLabel = new JLabel(actividad.getEstudiante().getNombre() +" " + actividad.getEstudiante().getApellido());
+                actividadLabel.setFont(new Font("Outfit", Font.PLAIN, 13));
+                actividadLabel.setForeground(Color.WHITE);
+                actividadLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                panel.add(Box.createVerticalStrut(10));
+                panel.add(actividadLabel);
+            }
+
+            panel.revalidate();
+            panel.repaint();
+        }
+
+}
+
+}
+

@@ -396,7 +396,7 @@ public class HabController {
         // Dividir en grupos de 12 estudiantes máximo
         for (int i = 0; i < filtradas.size(); i++) {
             Estudiante estudiante = filtradas.get(i);
-            int grupo = i / 6;
+            int grupo = i / 6  ;
             switch (grupo) {
                 case 0 -> grupo1.add(estudiante);
                 case 1 -> grupo2.add(estudiante);
@@ -475,6 +475,12 @@ public static List<Estudiante> filtrarNoAsignados(List<Estudiante> estudiantes) 
             .filter(e -> !carnetsAsignados.contains(e.getCarnet()))
             .collect(Collectors.toList());
 }
+    public static void eliminarHabitaciones(){
+        List<HabitacionesEstudiantes> actividades = HabController.getHabitacionesEstudiantes();
+        for (HabitacionesEstudiantes actividad : actividades) {
+            HabController.deleteAsignacion(actividad);
+        }
+    }
 
 
 }

@@ -20,6 +20,11 @@ public class ActividadesEstudiantesInternado {
     // Constructor vacío
     public ActividadesEstudiantesInternado() {}
 
+    public ActividadesEstudiantesInternado(Estudiante estudiante, ActividadInternado actividad) {
+        this.estudiante = estudiante;
+        this.actividad = actividad;
+    }
+
     // Getters y setters
     public Long getId() {
         return id;

@@ -1,5 +1,6 @@
 package org.Yaed.windows;
 
+import org.Yaed.controller.ActController;
 import org.Yaed.controller.EstudiantesController;
 import org.Yaed.controller.HabController;
 import org.Yaed.entity.Estudiante;
@@ -51,25 +52,61 @@ public class Habitaciones extends JFrame {
         JButton botonOpciones = createButton("Opciones", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
         JButton botonAyuda = createButton("Ayuda", leftColor, textColor, new Font("Outfit", Font.BOLD, 14));
 
-       botonGenerar.addActionListener(e -> {
-           int opcion = JOptionPane.showOptionDialog(
-               this,
-               "¿Qué desea generar?",
-               "Generar",
-               JOptionPane.YES_NO_OPTION,
-               JOptionPane.QUESTION_MESSAGE,
-               null,
-               new Object[]{"Actividades", "Habitaciones"},
-               "Actividades"
-           );
-           if (opcion == JOptionPane.YES_OPTION) {
-               JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
-           } else if (opcion == JOptionPane.NO_OPTION) {
-               HabController.AsignarMujeres();
-               HabController.AsignarHombres1();
-                HabController.AsignarHombres2();
-               JOptionPane.showMessageDialog(this, "Generación de Habitaciones completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
-           }
+        botonGenerar.addActionListener(e -> {
+            int opcion = JOptionPane.showOptionDialog(
+                    this,
+                    "¿Qué desea generar?",
+                    "Generar",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new Object[]{"Actividades", "Habitaciones"},
+                    "Actividades"
+            );
+            if (opcion == JOptionPane.YES_OPTION) { // Actividades
+                if (ActController.getActividades().isEmpty()) {
+                    ActController.AsignarActividades();
+                    JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    int confirm = JOptionPane.showConfirmDialog(
+                            this,
+                            "Ya existen actividades asignadas. ¿Desea reestablecer las actividades y generar nuevas?",
+                            "Reestablecer actividades",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE
+                    );
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        ActController.eliminarActividades();
+                        ActController.AsignarActividades();
+                        JOptionPane.showMessageDialog(this, "Generación de Actividades completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            } else if (opcion == JOptionPane.NO_OPTION) { // Habitaciones
+                if (HabController.getHabitaciones().isEmpty()) {
+                    HabController.AsignarMujeres();
+                    HabController.AsignarHombres1();
+                    HabController.AsignarHombres2();
+                    JOptionPane.showMessageDialog(this, "Generación de Habitaciones completada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    int confirm = JOptionPane.showConfirmDialog(
+                            this,
+                            "Ya existen habitaciones asignadas. ¿Desea reestablecer las habitaciones y generar nuevas?",
+                            "Reestablecer habitaciones",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE
+                    );
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        HabController.eliminarHabitaciones();
+                        HabController.AsignarMujeres();
+                        HabController.AsignarHombres1();
+                        HabController.AsignarHombres2();
+                    }
+                }
+            }
+        });
+       botonActividades.addActionListener(e ->{
+           new BecasInicio();
+           dispose();
        });
 
         // Agregar botones al panel izquierdo

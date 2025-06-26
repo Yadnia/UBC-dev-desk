@@ -49,6 +49,8 @@
         <mapping class="org.Yaed.entity.Tipos_Becas"></mapping>
         <mapping class="org.Yaed.entity.TipoUsuario"></mapping>
         <mapping class="org.Yaed.entity.Usuario"></mapping>
+        <mapping class="org.Yaed.entity.ActividadInternado"></mapping>
+        <mapping class="org.Yaed.entity.ActividadesEstudiantesInternado"></mapping>
 
 
 
