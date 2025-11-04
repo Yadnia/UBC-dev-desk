@@ -208,6 +208,10 @@ public class BecasInicio extends JFrame {
                 botonAyuda.setBackground(normalBg5);
             }
         });
+        botonAyuda.addActionListener(e -> {
+           new PerfilVentana().setVisible(true);
+        });
+
         leftPanel.add(Box.createVerticalStrut(20));
         leftPanel.add(botonAyuda);
 
